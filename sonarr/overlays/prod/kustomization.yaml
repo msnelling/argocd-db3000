@@ -2,8 +2,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 commonLabels:
   variant: prod
-bases:
-- ../../base
 images:
 - name: linuxserver/sonarr:latest
   newTag: version-3.0.6.1196
+bases:
+- ../../base

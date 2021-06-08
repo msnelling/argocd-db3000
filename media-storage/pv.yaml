@@ -1,0 +1,80 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: db3000-plex-media
+spec:
+  storageClassName: smb-plex-media
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  mountOptions:
+  - dir_mode=0770
+  - file_mode=0660
+  - uid=911
+  - gid=911
+  csi:
+    driver: smb.csi.k8s.io
+    readOnly: false
+    volumeHandle: db3000-plex-media
+    volumeAttributes:
+      source: "//10.1.1.30/Plex Media"
+    nodeStageSecretRef:
+      name: plex-smbcreds
+      namespace: db3000
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: db3000-plex-sync
+spec:
+  storageClassName: smb-plex-sync
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  mountOptions:
+  - dir_mode=0770
+  - file_mode=0660
+  - uid=911
+  - gid=911
+  csi:
+    driver: smb.csi.k8s.io
+    readOnly: false
+    volumeHandle: db3000-plex-sync
+    volumeAttributes:
+      source: "//10.1.1.30/Sync Media"
+    nodeStageSecretRef:
+      name: plex-smbcreds
+      namespace: db3000
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: plex-media
+  namespace: db3000
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Gi
+  volumeName: db3000-plex-media
+  storageClassName: smb-plex-media
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: plex-sync
+  namespace: db3000
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Gi
+  volumeName: db3000-plex-sync
+  storageClassName: smb-plex-sync
