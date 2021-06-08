@@ -18,7 +18,7 @@ spec:
   syncPolicy:
     automated: {}
   destination:
-    namespace: sonarr
+    namespace: db3000
     server: {{ .Values.spec.destination.server }}
   source:
     path: sonarr/overlays/prod
