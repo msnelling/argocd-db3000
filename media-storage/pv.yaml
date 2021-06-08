@@ -2,9 +2,9 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: db3000-plex-media
+  name: db3000-media-share
 spec:
-  storageClassName: smb-plex-media
+  storageClassName: smb-media-share
   capacity:
     storage: 100Gi
   accessModes:
@@ -18,7 +18,7 @@ spec:
   csi:
     driver: smb.csi.k8s.io
     readOnly: false
-    volumeHandle: db3000-plex-media
+    volumeHandle: db3000-media-share
     volumeAttributes:
       source: "//10.1.1.30/Plex Media"
     nodeStageSecretRef:
@@ -28,9 +28,9 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: db3000-plex-sync
+  name: db3000-media-share-sync
 spec:
-  storageClassName: smb-plex-sync
+  storageClassName: smb-media-share-sync
   capacity:
     storage: 100Gi
   accessModes:
@@ -44,7 +44,7 @@ spec:
   csi:
     driver: smb.csi.k8s.io
     readOnly: false
-    volumeHandle: db3000-plex-sync
+    volumeHandle: db3000-media-share-sync
     volumeAttributes:
       source: "//10.1.1.30/Sync Media"
     nodeStageSecretRef:
@@ -54,7 +54,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: plex-media
+  name: media-share
   namespace: db3000
 spec:
   accessModes:
@@ -62,13 +62,13 @@ spec:
   resources:
     requests:
       storage: 100Gi
-  volumeName: db3000-plex-media
-  storageClassName: smb-plex-media
+  volumeName: db3000-media-share
+  storageClassName: smb-media-share
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: plex-sync
+  name: media-share-sync
   namespace: db3000
 spec:
   accessModes:
@@ -76,5 +76,5 @@ spec:
   resources:
     requests:
       storage: 100Gi
-  volumeName: db3000-plex-sync
-  storageClassName: smb-plex-sync
+  volumeName: db3000-media-share-sync
+  storageClassName: smb-media-share-sync

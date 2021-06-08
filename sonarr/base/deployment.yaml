@@ -71,7 +71,7 @@ spec:
           claimName: sonarr-config
       - name: media
         persistentVolumeClaim:
-          claimName: plex-media
+          claimName: media-share
       - name: sync
         persistentVolumeClaim:
-          claimName: plex-sync
+          claimName: media-share-sync
