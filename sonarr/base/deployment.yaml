@@ -1,0 +1,77 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sonarr
+  namespace: sonarr
+  labels:
+    app.kubernetes.io/name: sonarr
+    app.kubernetes.io/instance: sonarr
+    app.kubernetes.io/component: server
+    app.kubernetes.io/part-of: db3000
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: sonarr
+      app.kubernetes.io/instance: sonarr
+      app.kubernetes.io/component: server
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: sonarr
+        app.kubernetes.io/instance: sonarr
+        app.kubernetes.io/component: server
+    spec:
+      containers:
+      - name: sonarr
+        image: linuxserver/sonarr:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8989
+          name: http
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /login
+            port: http
+          initialDelaySeconds: 60
+        readinessProbe:
+          httpGet:
+            path: /login
+            port: http
+        env:
+        - name: TZ
+          value: Europe/London
+        - name: PUID
+          value: "911"
+        - name: PGID
+          value: "911"
+        - name: UMASK_SET
+          value: "0077"
+        resources:
+          requests:
+            memory: 300Mi
+        volumeMounts:
+        - mountPath: /config
+          name: config
+        - mountPath: /downloads
+          name: media
+          subPath: Scratch/Download
+        - mountPath: /tv
+          name: media
+          subPath: TV
+        - mountPath: /tv_sync
+          name: sync
+          subPath: tv
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: sonarr-config
+      - name: media
+        persistentVolumeClaim:
+          claimName: plex-media
+      - name: sync
+        persistentVolumeClaim:
+          claimName: plex-sync

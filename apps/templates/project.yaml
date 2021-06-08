@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: db3000
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  description: DB3000 Project
+  sourceRepos:
+  - {{ .Values.spec.source.repoURL }}
+  destinations:
+  - namespace: '*'
+    server: {{ .Values.spec.destination.server }}
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'

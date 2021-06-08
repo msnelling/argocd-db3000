@@ -1,0 +1,46 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: sonarr
+  namespace: sonarr
+  labels:
+    app.kubernetes.io/name: sonarr
+    app.kubernetes.io/instance: sonarr
+    app.kubernetes.io/component: server
+    app.kubernetes.io/part-of: db3000
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`sonarr.xmple.io`)
+    kind: Rule
+    services:
+    - name: sonarr
+      port: 80
+  tls:
+    secretName: sonarr-tls
+    options:
+      name: mintls13
+      namespace: traefik
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: sonarr-tls
+  namespace: sonarr
+  labels:
+    app.kubernetes.io/name: sonarr
+    app.kubernetes.io/instance: sonarr
+    app.kubernetes.io/component: server
+    app.kubernetes.io/part-of: db3000
+spec:
+  secretName: sonarr-tls
+  privateKey:
+    algorithm: ECDSA
+    size: 384
+  dnsNames:
+  - sonarr.xmple.io
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer

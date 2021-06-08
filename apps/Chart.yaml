@@ -1,0 +1,6 @@
+apiVersion: v2
+name: db3000
+description: The DB3000 automated media manager.
+type: application
+version: 0.1.0
+appVersion: "1.0"
