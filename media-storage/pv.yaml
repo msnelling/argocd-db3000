@@ -22,7 +22,7 @@ spec:
     volumeAttributes:
       source: "//10.1.1.30/Plex Media"
     nodeStageSecretRef:
-      name: plex-smbcreds
+      name: media-smb-creds
       namespace: db3000
 ---
 apiVersion: v1
@@ -48,7 +48,7 @@ spec:
     volumeAttributes:
       source: "//10.1.1.30/Sync Media"
     nodeStageSecretRef:
-      name: plex-smbcreds
+      name: media-smb-creds
       namespace: db3000
 ---
 apiVersion: v1
