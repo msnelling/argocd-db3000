@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: radarr
+  namespace: db3000
+  labels:
+    app.kubernetes.io/name: radarr
+    app.kubernetes.io/instance: radarr
+    app.kubernetes.io/component: server
+    app.kubernetes.io/managed-by: manual
+    app.kubernetes.io/part-of: db3000
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: radarr
+      app.kubernetes.io/name: radarr
+      app.kubernetes.io/component: server
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: radarr
+        app.kubernetes.io/name: radarr
+        app.kubernetes.io/component: server
+    spec:
+      containers:
+      - name: radarr
+        image: linuxserver/radarr:amd64-nightly
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 7878
+          name: http
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /login
+            port: http
+          initialDelaySeconds: 60
+        readinessProbe:
+          httpGet:
+            path: /login
+            port: http
+        env:
+        - name: TZ
+          value: Europe/London
+        - name: PUID
+          value: "911"
+        - name: PGID
+          value: "911"
+        - name: UMASK_SET
+          value: "0077"
+        resources:
+          requests:
+            memory: 200Mi
+        volumeMounts:
+        - mountPath: /config
+          name: config
+        - mountPath: /downloads
+          name: media
+          subPath: Scratch/Download
+        - mountPath: /movies
+          name: media
+          subPath: Movies
+        - mountPath: /movies_sync
+          name: sync
+          subPath: movies
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: radarr-config
+      - name: media
+        persistentVolumeClaim:
+          claimName: plex-media
+      - name: sync
+        persistentVolumeClaim:
+          claimName: plex-sync
