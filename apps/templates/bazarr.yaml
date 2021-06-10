@@ -7,8 +7,8 @@ metadata:
   - resources-finalizer.argocd.argoproj.io
 spec:
   project: db3000
-  #syncPolicy:
-  #  automated: {}
+#  syncPolicy:
+#    automated: {}
   destination:
     namespace: db3000
     server: {{ .Values.spec.destination.server }}
