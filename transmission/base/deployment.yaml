@@ -26,7 +26,7 @@ spec:
       containers:
       - name: transmission
         image: linuxserver/transmission:latest
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9091
           name: http
