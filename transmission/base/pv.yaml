@@ -15,7 +15,7 @@ spec:
   - ReadWriteOnce
   claimRef:
     name: transmission-config
-    namespace: db3000
+    #namespace: db3000
   storageClassName: longhorn-db3000
   csi:
     driver: driver.longhorn.io
