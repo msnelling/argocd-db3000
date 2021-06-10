@@ -1,0 +1,86 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: transmission
+  namespace: db3000
+  labels:
+    app.kubernetes.io/name: transmission
+    app.kubernetes.io/instance: transmission
+    app.kubernetes.io/component: server
+    app.kubernetes.io/part-of: db3000
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: transmission
+      app.kubernetes.io/name: transmission
+      app.kubernetes.io/component: server
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: transmission
+        app.kubernetes.io/name: transmission
+        app.kubernetes.io/component: server
+    spec:
+      containers:
+      - name: transmission
+        image: linuxserver/transmission:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9091
+          name: http
+          protocol: TCP
+        - containerPort: 51413
+          name: bt-udp
+          protocol: UDP
+        - containerPort: 51413
+          name: bt-tcp
+          protocol: TCP
+        livenessProbe:
+          tcpSocket:
+            port: http
+          initialDelaySeconds: 10
+        readinessProbe:
+          tcpSocket:
+            port: http
+        env:
+        - name: TZ
+          value: Europe/London
+        - name: PUID
+          value: "911"
+        - name: PGID
+          value: "911"
+        - name: UMASK_SET
+          value: "0077"
+        - name: "TRANSMISSION_WEB_HOME"
+          #value: /combustion-release/
+          value: /transmission-web-control/
+          #value: /kettu/
+        - name: USER
+          valueFrom:
+            secretKeyRef:
+              name: transmission-creds
+              key: username
+        - name: PASS
+          valueFrom:
+            secretKeyRef:
+              name: transmission-creds
+              key: password
+        resources:
+          requests:
+            memory: 200Mi
+        volumeMounts:
+        - mountPath: /config
+          name: config
+        - mountPath: /downloads
+          name: media
+          subPath: Scratch/Download/Transmission
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: transmission-config
+      - name: media
+        persistentVolumeClaim:
+          claimName: media-share
