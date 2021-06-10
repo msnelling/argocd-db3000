@@ -13,9 +13,6 @@ spec:
     storage: 1Gi
   accessModes:
   - ReadWriteOnce
-  claimRef:
-    name: jackett-config
-    #namespace: db3000
   storageClassName: longhorn-db3000
   csi:
     driver: driver.longhorn.io
