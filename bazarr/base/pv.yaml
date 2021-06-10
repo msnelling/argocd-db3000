@@ -13,8 +13,6 @@ spec:
     storage: 1Gi
   accessModes:
   - ReadWriteOnce
-  claimRef:
-    name: bazarr-config
   storageClassName: longhorn-db3000
   csi:
     driver: driver.longhorn.io

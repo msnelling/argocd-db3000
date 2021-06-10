@@ -1,4 +1,0 @@
-namespace:
-- kind: PersistentVolume
-  path: spec/claimRef/namespace
-  create: true
