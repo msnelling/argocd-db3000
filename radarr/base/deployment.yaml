@@ -72,7 +72,7 @@ spec:
           claimName: radarr-config
       - name: media
         persistentVolumeClaim:
-          claimName: media-share-share
+          claimName: media-share
       - name: sync
         persistentVolumeClaim:
           claimName: media-share-sync
