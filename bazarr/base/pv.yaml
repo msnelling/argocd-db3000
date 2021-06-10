@@ -15,7 +15,6 @@ spec:
   - ReadWriteOnce
   claimRef:
     name: bazarr-config
-    namespace: default
   storageClassName: longhorn-db3000
   csi:
     driver: driver.longhorn.io
