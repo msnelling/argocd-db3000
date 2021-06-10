@@ -5,3 +5,7 @@ resources:
 - pv.yaml
 configurations:
 - kustomizeconfig.yaml
+
+# This is hard-coded until I can figure out why ArgoCD 
+# doesn't updated the nodeStageSecretRef namespace.
+namespace: db3000
