@@ -5,6 +5,5 @@ resources:
 - deployment.yaml
 - service.yaml
 - ingress.yaml
-namespace:
-- kind: PersistentVolume
-  path: spec/claimRef/namespace
+configurations:
+  - kustomizeconfig.yaml
