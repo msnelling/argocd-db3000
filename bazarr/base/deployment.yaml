@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: bazarr
-  namespace: db3000
   labels:
     app.kubernetes.io/name: bazarr
     app.kubernetes.io/instance: bazarr

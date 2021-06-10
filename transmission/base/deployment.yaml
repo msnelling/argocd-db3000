@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: transmission
-  namespace: db3000
   labels:
     app.kubernetes.io/name: transmission
     app.kubernetes.io/instance: transmission
