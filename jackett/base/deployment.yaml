@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jackett
+  namespace: db3000
+  labels:
+    app.kubernetes.io/name: jackett
+    app.kubernetes.io/instance: jackett
+    app.kubernetes.io/component: server
+    app.kubernetes.io/part-of: db3000
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: jackett
+      app.kubernetes.io/name: jackett
+      app.kubernetes.io/component: server
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: jackett
+        app.kubernetes.io/name: jackett
+        app.kubernetes.io/component: server
+    spec:
+      containers:
+      - name: jackett
+        image: linuxserver/jackett:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9117
+          name: http
+          protocol: TCP
+        env:
+        - name: TZ
+          value: Europe/London
+        - name: PUID
+          value: "911"
+        - name: PGID
+          value: "911"
+        resources:
+          requests:
+            memory: 200Mi
+        volumeMounts:
+        - mountPath: /config
+          name: config
+        - mountPath: /downloads
+          name: media
+          subPath: Scratch/Download
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: jackett-config
+      - name: media
+        persistentVolumeClaim:
+          claimName: media-share
