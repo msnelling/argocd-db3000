@@ -8,7 +8,6 @@ metadata:
     app.kubernetes.io/name: radarr
     app.kubernetes.io/instance: radarr
     app.kubernetes.io/component: server
-    app.kubernetes.io/managed-by: manual
     app.kubernetes.io/part-of: db3000
 spec:
   entryPoints:
@@ -34,7 +33,6 @@ metadata:
     app.kubernetes.io/name: radarr
     app.kubernetes.io/instance: radarr
     app.kubernetes.io/component: server
-    app.kubernetes.io/managed-by: manual
     app.kubernetes.io/part-of: db3000
 spec:
   secretName: radarr-tls

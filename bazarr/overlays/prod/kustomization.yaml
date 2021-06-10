@@ -3,7 +3,7 @@ kind: Kustomization
 commonLabels:
   variant: prod
 images:
-- name: linuxserver/sonarr
-  newTag: version-3.0.6.1196
+- name: linuxserver/bazarr
+  newTag: version-v0.9.5
 bases:
 - ../../base

@@ -1,11 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: radarr
+  name: bazarr
   namespace: db3000
   labels:
-    app.kubernetes.io/name: radarr
-    app.kubernetes.io/instance: radarr
+    app.kubernetes.io/name: bazarr
+    app.kubernetes.io/instance: bazarr
     app.kubernetes.io/component: server
     app.kubernetes.io/part-of: db3000
 spec:
@@ -14,40 +14,40 @@ spec:
     type: Recreate
   selector:
     matchLabels:
-      app.kubernetes.io/instance: radarr
-      app.kubernetes.io/name: radarr
+      app.kubernetes.io/name: bazarr
+      app.kubernetes.io/instance: bazarr
       app.kubernetes.io/component: server
   template:
     metadata:
       labels:
-        app.kubernetes.io/instance: radarr
-        app.kubernetes.io/name: radarr
+        app.kubernetes.io/name: bazarr
+        app.kubernetes.io/instance: bazarr
         app.kubernetes.io/component: server
     spec:
       containers:
-      - name: radarr
-        image: linuxserver/radarr:latest
+      - name: bazarr
+        image: linuxserver/bazarr:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 7878
+        - containerPort: 6767
           name: http
           protocol: TCP
-        livenessProbe:
-          httpGet:
-            path: /login
-            port: http
-          initialDelaySeconds: 60
-        readinessProbe:
-          httpGet:
-            path: /login
-            port: http
+#          livenessProbe:
+#            httpGet:
+#              path: /notifications
+#              port: http
+#            initialDelaySeconds: 60
+#          readinessProbe:
+#            httpGet:
+#              path: /notifications
+#              port: http
         env:
         - name: TZ
           value: Europe/London
         - name: PUID
           value: "911"
         - name: PGID
-          value: "911"
+          value: "2001"
         - name: UMASK_SET
           value: "0077"
         resources:
@@ -56,9 +56,12 @@ spec:
         volumeMounts:
         - mountPath: /config
           name: config
-        - mountPath: /downloads
+        - mountPath: /tv
           name: media
-          subPath: Scratch/Download
+          subPath: TV
+        - mountPath: /tv_sync
+          name: sync
+          subPath: tv
         - mountPath: /movies
           name: media
           subPath: Movies
@@ -68,7 +71,7 @@ spec:
       volumes:
       - name: config
         persistentVolumeClaim:
-          claimName: radarr-config
+          claimName: bazarr-config
       - name: media
         persistentVolumeClaim:
           claimName: media-share
