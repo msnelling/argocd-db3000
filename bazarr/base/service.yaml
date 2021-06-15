@@ -4,9 +4,6 @@ metadata:
   name: bazarr
   labels:
     app.kubernetes.io/name: bazarr
-    app.kubernetes.io/instance: bazarr
-    app.kubernetes.io/component: server
-    app.kubernetes.io/part-of: db3000
 spec:
   ports:
   - name: http
@@ -14,7 +11,5 @@ spec:
     port: 80
     targetPort: http
   selector:
-    app.kubernetes.io/instance: bazarr
     app.kubernetes.io/name: bazarr
-    app.kubernetes.io/component: server
   type: ClusterIP

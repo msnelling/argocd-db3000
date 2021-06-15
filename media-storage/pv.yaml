@@ -3,6 +3,8 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: db3000-media-share
+  labels:
+    app.kubernetes.io/name: media-storage
 spec:
   storageClassName: smb-media-share
   capacity:
@@ -28,6 +30,8 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: db3000-media-share-sync
+  labels:
+    app.kubernetes.io/name: media-storage
 spec:
   storageClassName: smb-media-share-sync
   capacity:
@@ -53,6 +57,8 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: media-share
+  labels:
+    app.kubernetes.io/name: media-storage
 spec:
   accessModes:
   - ReadWriteMany
@@ -66,6 +72,8 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: media-share-sync
+  labels:
+    app.kubernetes.io/name: media-storage
 spec:
   accessModes:
   - ReadWriteMany

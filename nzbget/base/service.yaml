@@ -4,9 +4,6 @@ metadata:
   name: nzbget
   labels:
     app.kubernetes.io/name: nzbget
-    app.kubernetes.io/instance: nzbget
-    app.kubernetes.io/component: server
-    app.kubernetes.io/part-of: db3000
 spec:
   ports:
   - name: http
@@ -14,7 +11,5 @@ spec:
     protocol: TCP
     targetPort: http
   selector:
-    app.kubernetes.io/instance: nzbget
     app.kubernetes.io/name: nzbget
-    app.kubernetes.io/component: server
   type: ClusterIP

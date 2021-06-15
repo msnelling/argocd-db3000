@@ -5,9 +5,6 @@ metadata:
   name: db3000-bazarr-config
   labels:
     app.kubernetes.io/name: bazarr
-    app.kubernetes.io/instance: bazarr
-    app.kubernetes.io/component: server
-    app.kubernetes.io/part-of: db3000
 spec:
   capacity:
     storage: 1Gi
@@ -25,9 +22,6 @@ metadata:
   name: bazarr-config
   labels:
     app.kubernetes.io/name: bazarr
-    app.kubernetes.io/instance: bazarr
-    app.kubernetes.io/component: server
-    app.kubernetes.io/part-of: db3000
 spec:
   accessModes:
   - ReadWriteOnce

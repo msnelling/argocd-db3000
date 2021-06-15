@@ -5,9 +5,6 @@ metadata:
   name: db3000-transmission-config
   labels:
     app.kubernetes.io/name: transmission
-    app.kubernetes.io/instance: transmission
-    app.kubernetes.io/component: server
-    app.kubernetes.io/part-of: db3000
 spec:
   capacity:
     storage: 1Gi
@@ -25,9 +22,6 @@ metadata:
   name: transmission-config
   labels:
     app.kubernetes.io/name: transmission
-    app.kubernetes.io/instance: transmission
-    app.kubernetes.io/component: server
-    app.kubernetes.io/part-of: db3000
 spec:
   accessModes:
   - ReadWriteOnce

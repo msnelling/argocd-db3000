@@ -5,9 +5,6 @@ metadata:
   name: radarr
   labels:
     app.kubernetes.io/name: radarr
-    app.kubernetes.io/instance: radarr
-    app.kubernetes.io/component: server
-    app.kubernetes.io/part-of: db3000
 spec:
   entryPoints:
   - websecure
@@ -29,9 +26,6 @@ metadata:
   name: radarr-tls
   labels:
     app.kubernetes.io/name: radarr
-    app.kubernetes.io/instance: radarr
-    app.kubernetes.io/component: server
-    app.kubernetes.io/part-of: db3000
 spec:
   secretName: radarr-tls
   privateKey:

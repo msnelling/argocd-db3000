@@ -5,9 +5,6 @@ metadata:
   name: db3000-jackett-config
   labels:
     app.kubernetes.io/name: jackett
-    app.kubernetes.io/instance: jackett
-    app.kubernetes.io/component: server
-    app.kubernetes.io/part-of: db3000
 spec:
   capacity:
     storage: 1Gi
@@ -25,9 +22,6 @@ metadata:
   name: jackett-config
   labels:
     app.kubernetes.io/name: jackett
-    app.kubernetes.io/instance: jackett
-    app.kubernetes.io/component: server
-    app.kubernetes.io/part-of: db3000
 spec:
   accessModes:
   - ReadWriteOnce
