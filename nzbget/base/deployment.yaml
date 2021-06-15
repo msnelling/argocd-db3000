@@ -10,11 +10,11 @@ spec:
     type: Recreate
   selector:
     matchLabels:
-      app.kubernetes.io/instance: nzbget
+      app.kubernetes.io/name: nzbget
   template:
     metadata:
       labels:
-        app.kubernetes.io/instance: nzbget
+        app.kubernetes.io/name: nzbget
     spec:
       containers:
       - name: nzbget
