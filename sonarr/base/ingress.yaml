@@ -40,5 +40,5 @@ spec:
   dnsNames:
   - sonarr.xmple.io
   issuerRef:
-    name: letsencrypt-staging
+    name: letsencrypt-production
     kind: ClusterIssuer

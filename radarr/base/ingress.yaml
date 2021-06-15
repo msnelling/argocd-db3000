@@ -40,5 +40,5 @@ spec:
   dnsNames:
   - radarr.xmple.io
   issuerRef:
-    name: letsencrypt-staging
+    name: letsencrypt-production
     kind: ClusterIssuer
