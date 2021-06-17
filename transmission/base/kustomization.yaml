@@ -4,6 +4,7 @@ commonLabels:
   app.kubernetes.io/instance: transmission
   app.kubernetes.io/part-of: db3000
 resources:
+- config.yaml
 - pv.yaml
 - deployment.yaml
 - service.yaml
