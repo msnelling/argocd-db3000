@@ -3,7 +3,7 @@ kind: Kustomization
 commonLabels:
   variant: prod
 images:
-- name: linuxserver/transmission
+- name: ghcr.io/linuxserver/transmission
   newTag: version-3.00-r2
 bases:
 - ../../base

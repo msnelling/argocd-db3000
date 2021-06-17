@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: plex
-        image: linuxserver/plex:latest
+        image: ghcr.io/linuxserver/plex
         imagePullPolicy: IfNotPresent
         ports:
         - name: pms

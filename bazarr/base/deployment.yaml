@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: bazarr
-        image: linuxserver/bazarr:latest
+        image: ghcr.io/linuxserver/bazarr
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 6767
@@ -33,15 +33,9 @@ spec:
 #            httpGet:
 #              path: /notifications
 #              port: http
-        env:
-        - name: TZ
-          value: Europe/London
-        - name: PUID
-          value: "911"
-        - name: PGID
-          value: "2001"
-        - name: UMASK_SET
-          value: "0077"
+        envFrom:
+        - configMapRef:
+            name: bazarr-config
         resources:
           requests:
             memory: 200Mi

@@ -3,7 +3,7 @@ kind: Kustomization
 commonLabels:
   variant: prod
 images:
-- name: linuxserver/sonarr
+- name: ghcr.io/linuxserver/sonarr
   newTag: version-3.0.6.1196
 bases:
 - ../../base

@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: sonarr
-        image: linuxserver/sonarr:latest
+        image: ghcr.io/linuxserver/sonarr
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8989
@@ -33,15 +33,9 @@ spec:
           httpGet:
             path: /login
             port: http
-        env:
-        - name: TZ
-          value: Europe/London
-        - name: PUID
-          value: "911"
-        - name: PGID
-          value: "911"
-        - name: UMASK_SET
-          value: "0077"
+        envFrom:
+        - configMapRef:
+            name: sonarr-config
         resources:
           requests:
             memory: 300Mi

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: transmission-config
+  labels:
+    app.kubernetes.io/name: transmission
+data:
+  TZ: Europe/London
+  PGID: "911"
+  PUID: "911"
+  UMASK: "007"
+  TRANSMISSION_WEB_HOME: /transmission-web-control/

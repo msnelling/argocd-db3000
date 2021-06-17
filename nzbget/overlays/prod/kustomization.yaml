@@ -3,7 +3,7 @@ kind: Kustomization
 commonLabels:
   variant: prod
 images:
-- name: linuxserver/nzbget
+- name: ghcr.io/linuxserver/nzbget
   newTag: version-v21.1
 bases:
 - ../../base

@@ -3,7 +3,7 @@ kind: Kustomization
 commonLabels:
   variant: prod
 images:
-- name: linuxserver/jackett
-  newTag: version-v0.18.283
+- name: ghcr.io/linuxserver/jackett
+  newTag: version-v0.18.345
 bases:
 - ../../base

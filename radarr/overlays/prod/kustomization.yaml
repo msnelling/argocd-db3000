@@ -3,7 +3,7 @@ kind: Kustomization
 commonLabels:
   variant: prod
 images:
-- name: linuxserver/radarr
+- name: ghcr.io/linuxserver/radarr
   newTag: version-3.2.2.5080
 bases:
 - ../../base

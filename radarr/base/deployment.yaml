@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: radarr
-        image: linuxserver/radarr:latest
+        image: ghcr.io/linuxserver/radarr
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 7878
@@ -33,15 +33,9 @@ spec:
           httpGet:
             path: /login
             port: http
-        env:
-        - name: TZ
-          value: Europe/London
-        - name: PUID
-          value: "911"
-        - name: PGID
-          value: "911"
-        - name: UMASK_SET
-          value: "0077"
+        envFrom:
+        - configMapRef:
+            name: radarr-config
         resources:
           requests:
             memory: 200Mi

@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: transmission
-        image: linuxserver/transmission:latest
+        image: ghcr.io/linuxserver/transmission
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9091
@@ -37,19 +37,10 @@ spec:
         readinessProbe:
           tcpSocket:
             port: http
+        envFrom:
+        - configMapRef:
+            name: transmission-config
         env:
-        - name: TZ
-          value: Europe/London
-        - name: PUID
-          value: "911"
-        - name: PGID
-          value: "911"
-        - name: UMASK_SET
-          value: "0077"
-        - name: "TRANSMISSION_WEB_HOME"
-          #value: /combustion-release/
-          value: /transmission-web-control/
-          #value: /kettu/
         - name: USER
           valueFrom:
             secretKeyRef:
