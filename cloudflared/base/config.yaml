@@ -6,6 +6,7 @@ data:
   config.yaml: |
     tunnel: db3000-ingress
     credentials-file: /config/credentials.json
+    no-autoupdate: true
     ingress:
     - hostname: sonarr.xmple.io
       service: http://sonarr
