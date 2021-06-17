@@ -29,8 +29,6 @@ spec:
         volumeMounts:
         - mountPath: /config
           name: config
-        - mountPath: /config
-          name: credentials
           readOnly: true
       volumes:
       - name: config
