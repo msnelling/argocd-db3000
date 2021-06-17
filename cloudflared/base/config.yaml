@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cloudflared-config
+data:
+  config.yaml: |
+    tunnel: db3000-ingress
+    credentials-file: /config/credentials.json
+    ingress:
+    - hostname: sonarr.xmple.io
+      service: http://sonarr

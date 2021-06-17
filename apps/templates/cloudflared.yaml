@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cloudflared
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: db3000
+  destination:
+    namespace: db3000
+    server: {{ .Values.spec.destination.server }}
+  source:
+    path: cloudflared/base
+    repoURL: {{ .Values.spec.source.repoURL }}
+    targetRevision: {{ .Values.spec.source.targetRevision }}
+  syncPolicy:
+    #automated: {}
+    syncOptions:
+    - CreateNamespace=true
