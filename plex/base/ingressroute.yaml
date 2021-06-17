@@ -1,0 +1,31 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: plex
+  labels:
+    app.kubernetes.io/name: plex
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`plex.xmple.io`)
+    kind: Rule
+    services:
+    - name: plex
+      port: 32400
+      scheme: https
+      serversTransport: plex
+  tls:
+    secretName: plex-tls
+    options:
+      name: mintls13
+      namespace: traefik
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: ServersTransport
+metadata:
+  name: plex
+spec:
+  serverName: plex.xmple.io
+  insecureSkipVerify: true 

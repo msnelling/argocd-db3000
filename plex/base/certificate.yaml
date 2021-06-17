@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: plex-tls
+  labels:
+    app.kubernetes.io/name: plex
+spec:
+  secretName: plex-tls
+  privateKey:
+    algorithm: ECDSA
+    size: 384
+  dnsNames:
+  - plex.xmple.io
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
