@@ -9,6 +9,6 @@ resources:
 - deployment.yaml
 - service.yaml
 #- service-lb.yaml
-- certificate.yanl
+- certificate.yaml
 - ingress.yaml
 #- ingressroute.yaml
