@@ -39,4 +39,4 @@ spec:
           - configMap:
               name: cloudflared-config
           - secret:
-              secretName: cloudflared-credentials
+              name: cloudflared-credentials
