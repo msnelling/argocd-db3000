@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: nzbget-tls
+  labels:
+    app.kubernetes.io/name: nzbget
+spec:
+  secretName: nzbget-tls
+  privateKey:
+    algorithm: ECDSA
+    size: 384
+  dnsNames:
+  - nzbget.xmple.io
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer

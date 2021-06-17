@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: bazarr-tls
+  labels:
+    app.kubernetes.io/name: bazarr
+spec:
+  secretName: bazarr-tls
+  privateKey:
+    algorithm: ECDSA
+    size: 384
+  dnsNames:
+  - bazarr.xmple.io
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer

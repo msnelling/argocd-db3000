@@ -1,4 +1,3 @@
----
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
@@ -19,20 +18,3 @@ spec:
     options:
       name: mintls13
       namespace: traefik
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: radarr-tls
-  labels:
-    app.kubernetes.io/name: radarr
-spec:
-  secretName: radarr-tls
-  privateKey:
-    algorithm: ECDSA
-    size: 384
-  dnsNames:
-  - radarr.xmple.io
-  issuerRef:
-    name: letsencrypt-production
-    kind: ClusterIssuer
