@@ -7,5 +7,5 @@ resources:
 - pv.yaml
 - deployment.yaml
 - service.yaml
-- certificate.yanl
+- certificate.yaml
 - ingress.yaml
