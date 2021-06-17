@@ -9,4 +9,4 @@ data:
     no-autoupdate: true
     ingress:
     - hostname: sonarr.xmple.io
-      service: http://sonarr
+      service: http://sonarr:80
