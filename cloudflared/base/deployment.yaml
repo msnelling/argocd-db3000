@@ -5,7 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/name: cloudflared
 spec:
-  replicas: 1
+  replicas: 2
   revisionHistoryLimit: 2
   strategy:
     type: Recreate
@@ -19,9 +19,13 @@ spec:
     spec:
       containers:
       - name: cloudflared
-        image: cloudflare/cloudflared
+        image: cloudflare/cloudflared:2021.4.0
         imagePullPolicy: IfNotPresent
-        args: ["tunnel", "--config", "/etc/cloudflared/config/config.yaml"]
+        args:
+        - tunnel
+        - --config
+        - /etc/cloudflared/config/config.yaml
+        - run
         livenessProbe:
           httpGet:
             path: /ready
@@ -35,6 +39,7 @@ spec:
         volumeMounts:
         - mountPath: /etc/cloudflared/config
           name: config
+          readOnly: true
       volumes:
       - name: config
         projected:
