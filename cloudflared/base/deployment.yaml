@@ -21,13 +21,19 @@ spec:
       - name: cloudflared
         image: cloudflare/cloudflared
         imagePullPolicy: IfNotPresent
-        command: ["cloudflared"]
-        args: ["tunnel", "--config", "/config/config.yaml"]
+        args: ["tunnel", "--config", "/etc/cloudflared/config/config.yaml"]
+        livenessProbe:
+          httpGet:
+            path: /ready
+            port: 2000
+          failureThreshold: 1
+          initialDelaySeconds: 10
+          periodSeconds: 10
         resources:
           requests:
             memory: 200Mi
         volumeMounts:
-        - mountPath: /config
+        - mountPath: /etc/cloudflared/config
           name: config
       volumes:
       - name: config
