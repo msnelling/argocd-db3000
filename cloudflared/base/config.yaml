@@ -10,3 +10,4 @@ data:
     ingress:
     - hostname: sonarr.xmple.io
       service: http://sonarr:80
+    - service: http_status:404

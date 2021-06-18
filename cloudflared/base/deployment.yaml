@@ -22,14 +22,13 @@ spec:
         image: cloudflare/cloudflared
         imagePullPolicy: IfNotPresent
         command: ["cloudflared"]
-        args: ["tunnel", "--config", "/config/config.yaml", "run"]
+        args: ["tunnel", "--config", "/config/config.yaml"]
         resources:
           requests:
             memory: 200Mi
         volumeMounts:
         - mountPath: /config
           name: config
-          readOnly: true
       volumes:
       - name: config
         projected:
