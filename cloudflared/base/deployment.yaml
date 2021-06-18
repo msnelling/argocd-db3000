@@ -22,7 +22,7 @@ spec:
         image: cloudflare/cloudflared
         imagePullPolicy: IfNotPresent
         command: ["cloudflared"]
-        args: ["tunnel", "--config", "/config/config.yaml"]
+        args: ["tunnel", "--config", "/config/config.yaml", "run"]
         resources:
           requests:
             memory: 200Mi
