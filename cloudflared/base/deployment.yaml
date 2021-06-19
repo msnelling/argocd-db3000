@@ -35,7 +35,11 @@ spec:
           periodSeconds: 10
         resources:
           requests:
-            memory: 200Mi
+            cpu: "0.01"
+            memory: 20Mi
+          limits:
+            cpu: "0.01"
+            memory: 20Mi
         volumeMounts:
         - mountPath: /etc/cloudflared/config
           name: config
