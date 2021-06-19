@@ -8,7 +8,9 @@ spec:
   replicas: 2
   revisionHistoryLimit: 2
   strategy:
-    type: Recreate
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: "50%"
   selector:
     matchLabels:
       app.kubernetes.io/name: cloudflared
