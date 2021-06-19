@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: cloudflared
-        image: cloudflare/cloudflared:2021.4.0
+        image: cloudflare/cloudflared
         imagePullPolicy: IfNotPresent
         args:
         - tunnel
