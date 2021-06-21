@@ -23,8 +23,8 @@ spec:
       - name: cloudflared
         image: cloudflare/cloudflared
         imagePullPolicy: IfNotPresent
+        command: ['cloudflared', 'tunnel']
         args:
-        - tunnel
         - --config
         - /etc/cloudflared/config/config.yaml
         - run
@@ -33,14 +33,14 @@ spec:
             path: /ready
             port: 2000
           failureThreshold: 1
-          initialDelaySeconds: 10
+          initialDelaySeconds: 30
           periodSeconds: 10
         resources:
           requests:
-            cpu: "0.01"
+            cpu: 50m
             memory: 20Mi
           limits:
-            cpu: "0.01"
+            cpu: 100m
             memory: 20Mi
         volumeMounts:
         - mountPath: /etc/cloudflared/config

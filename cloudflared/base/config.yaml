@@ -11,6 +11,6 @@ data:
     ingress:
     - hostname: sonarr.xmple.io
       service: http://sonarr:80
-    - hostname: hello.xmple.io
+    - hostname: test.xmple.io
       service: hello_world
     - service: http_status:404
