@@ -11,7 +11,7 @@ data:
     ingress:
     - hostname: db3000.xmple.io
       service: http://ombi:80
-      path: /ombi
+      path: /ombi/*
     - hostname: test.xmple.io
       service: hello_world
     - service: http_status:404
