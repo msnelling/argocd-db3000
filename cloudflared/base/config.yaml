@@ -9,8 +9,9 @@ data:
     metrics: 0.0.0.0:2000
     no-autoupdate: true
     ingress:
-    - hostname: sonarr.xmple.io
-      service: http://sonarr:80
+    - hostname: db3000.xmple.io
+      service: http://ombi:80
+      path: /ombi
     - hostname: test.xmple.io
       service: hello_world
     - service: http_status:404
