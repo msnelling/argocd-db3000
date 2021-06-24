@@ -38,7 +38,11 @@ spec:
         - configMapRef:
             name: sonarr-config
         resources:
+          limits:
+            cpu: 300m
+            memory: 600Mi
           requests:
+            cpu: 50m
             memory: 300Mi
         volumeMounts:
         - mountPath: /config

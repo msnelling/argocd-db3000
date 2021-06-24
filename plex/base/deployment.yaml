@@ -41,8 +41,11 @@ spec:
         - configMapRef:
             name: plex-config
         resources:
+          limits:
+            cpu: 15000m
+            memory: 6Gi
           requests:
-            memory: 200Mi
+            memory: 4Gi
         volumeMounts:
         - mountPath: /config
           name: config

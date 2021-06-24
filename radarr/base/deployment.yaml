@@ -38,8 +38,12 @@ spec:
         - configMapRef:
             name: radarr-config
         resources:
+          limits:
+            cpu: 100m
+            memory: 600Mi
           requests:
-            memory: 200Mi
+            cpu: 50m
+            memory: 300Mi
         volumeMounts:
         - mountPath: /config
           name: config

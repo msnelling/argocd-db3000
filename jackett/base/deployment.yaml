@@ -29,7 +29,11 @@ spec:
         - configMapRef:
             name: jackett-config
         resources:
+          limits:
+            cpu: 100m
+            memory: 300Mi
           requests:
+            cpu: 20m
             memory: 200Mi
         volumeMounts:
         - mountPath: /config

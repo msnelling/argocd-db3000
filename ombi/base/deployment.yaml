@@ -36,8 +36,11 @@ spec:
         - configMapRef:
             name: ombi-config
         resources:
+          limits:
+            cpu: 1000Mi
+            memory: 300Mi
           requests:
-            memory: 100Mi
+            memory: 200Mi
         volumeMounts:
         - mountPath: /config
           name: config

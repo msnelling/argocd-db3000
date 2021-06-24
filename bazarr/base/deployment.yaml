@@ -38,7 +38,11 @@ spec:
         - configMapRef:
             name: bazarr-config
         resources:
+          limits:
+            cpu: 200m
+            memory: 500Mi
           requests:
+            cpu: 100m
             memory: 200Mi
         volumeMounts:
         - mountPath: /config
