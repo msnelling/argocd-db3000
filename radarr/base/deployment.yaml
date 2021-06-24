@@ -39,10 +39,10 @@ spec:
             name: radarr-config
         resources:
           limits:
-            cpu: 100m
+            cpu: 500m
             memory: 600Mi
           requests:
-            cpu: 50m
+            cpu: 100m
             memory: 300Mi
         volumeMounts:
         - mountPath: /config
