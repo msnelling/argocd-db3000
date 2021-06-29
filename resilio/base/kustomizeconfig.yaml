@@ -1,0 +1,4 @@
+namespace:
+- kind: PersistentVolume
+  path: spec/csi/nodeStageSecretRef/namespace
+  create: true

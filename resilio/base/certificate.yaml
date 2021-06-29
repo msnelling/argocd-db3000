@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: resilio-tls
+  labels:
+    app.kubernetes.io/name: resilio
+spec:
+  secretName: resilio-tls
+  privateKey:
+    algorithm: ECDSA
+    size: 384
+  dnsNames:
+  - resilio.xmple.io
+  issuerRef:
+    name: letsencrypt-staging
+    kind: ClusterIssuer

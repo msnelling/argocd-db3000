@@ -1,0 +1,20 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: resilio
+  labels:
+    app.kubernetes.io/name: resilio
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`resilio.xmple.io`)
+    kind: Rule
+    services:
+    - name: resilio
+      port: 80
+  tls:
+    secretName: resilio-tls
+    options:
+      name: mintls13
+      namespace: traefik

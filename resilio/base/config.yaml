@@ -1,0 +1,33 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: resilio-env
+  labels:
+    app.kubernetes.io/name: resilio
+data:
+  TZ: Europe/London
+  UMASK: "007"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: resilio-config
+  labels:
+    app.kubernetes.io/name: resilio
+data:
+  sync.conf: |
+    {
+      "device_name" : "MS_k8s",
+      "listening_port" : 55555,
+      "storage_path" : "/mnt/sync",
+      "directory_root" : "/data/",
+      "use_upnp" : false,
+      "download_limit" : 0,
+      "upload_limit" : 0,
+      "webui" :
+      {
+          "listen" : "0.0.0.0:8888"
+      }
+    }
+    
