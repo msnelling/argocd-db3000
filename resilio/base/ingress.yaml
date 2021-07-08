@@ -11,7 +11,7 @@ spec:
   - match: Host(`resilio.xmple.io`)
     kind: Rule
     services:
-    - name: resilio
+    - name: resilio-ui
       port: 80
   tls:
     secretName: resilio-tls
