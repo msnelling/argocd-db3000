@@ -4,6 +4,6 @@ commonLabels:
   variant: prod
 images:
 - name: ghcr.io/linuxserver/bazarr
-  newTag: version-v0.9.5
+  newTag: version-v0.9.7
 bases:
 - ../../base
