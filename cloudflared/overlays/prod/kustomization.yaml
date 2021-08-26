@@ -4,6 +4,6 @@ commonLabels:
   variant: prod
 images:
 - name: cloudflare/cloudflared
-  newTag: "2021.6.0"
+  newTag: "2021.8.3"
 bases:
 - ../../base
