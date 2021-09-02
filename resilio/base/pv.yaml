@@ -57,6 +57,7 @@ spec:
       source: "//10.1.1.30/Veeam Backups"
     nodeStageSecretRef:
       name: resilio-veeam-creds
+      namespace: default
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
