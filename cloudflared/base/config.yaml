@@ -12,6 +12,8 @@ data:
     - hostname: db3000.xmple.io
       service: http://ombi:80
       path: /ombi/*
+    - hostname: plex.xmple.io
+      service: http://plex:32400
     - hostname: test.xmple.io
       service: hello_world
     - service: http_status:404
