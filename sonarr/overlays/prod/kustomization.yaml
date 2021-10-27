@@ -4,6 +4,6 @@ commonLabels:
   variant: prod
 images:
 - name: ghcr.io/linuxserver/sonarr
-  newTag: 0.6.1355
+  newTag: 0.6.1342
 bases:
 - ../../base
