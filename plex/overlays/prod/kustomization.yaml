@@ -4,6 +4,6 @@ commonLabels:
   variant: prod
 images:
 - name: ghcr.io/linuxserver/plex
-  newTag: 1.24.4
+  newTag: 1.24.5
 bases:
 - ../../base
