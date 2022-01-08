@@ -4,6 +4,6 @@ commonLabels:
   variant: prod
 images:
 - name: ghcr.io/linuxserver/ombi
-  newTag: version-v4.0.1342
+  newTag: version-v4.3.3
 bases:
 - ../../base
