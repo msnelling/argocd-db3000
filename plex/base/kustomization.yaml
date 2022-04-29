@@ -4,11 +4,11 @@ commonLabels:
   app.kubernetes.io/instance: plex
   app.kubernetes.io/part-of: db3000
 resources:
-- config.yaml
-- pv.yaml
-- deployment.yaml
-- service.yaml
-#- service-lb.yaml
-- certificate.yaml
-- ingress.yaml
+  - config.yaml
+  - pv.yaml
+  - deployment.yaml
+  - service.yaml
+  - service-lb.yaml
+  - certificate.yaml
+  - ingress.yaml
 #- ingressroute.yaml

@@ -7,3 +7,14 @@ images:
   newTag: version-v4.3.3
 bases:
 - ../../base
+patchesJson6902:
+  - patch: |
+      - op: add
+        path: /metadata/annotations
+        value:
+          cfargotunnel.com/cluster-tunnel: k3s-xmple-io
+          cfargotunnel.com/fqdn: db3000.xmple.io
+    target:
+      version: v1
+      kind: Service
+      name: ombi

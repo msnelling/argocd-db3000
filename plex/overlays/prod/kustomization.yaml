@@ -3,7 +3,7 @@ kind: Kustomization
 commonLabels:
   variant: prod
 images:
-- name: ghcr.io/linuxserver/plex
-  newTag: 1.26.0
+  - name: ghcr.io/linuxserver/plex
+    newTag: 1.26.0
 bases:
 - ../../base
