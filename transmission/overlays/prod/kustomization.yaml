@@ -4,6 +4,6 @@ commonLabels:
   variant: prod
 images:
 - name: ghcr.io/linuxserver/transmission
-  newTag: version-3.00-r2
+  newTag: version-3.00-r5
 bases:
 - ../../base
