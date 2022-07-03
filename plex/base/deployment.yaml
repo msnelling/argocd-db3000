@@ -61,9 +61,9 @@ spec:
         - mountPath: /tv_sync
           name: media-sync
           subPath: tv
-        - mountPath: /other_video
+        - mountPath: /other
           name: media-sync
-          subPath: Other Video
+          subPath: Other
       volumes:
       - name: config
         persistentVolumeClaim:
