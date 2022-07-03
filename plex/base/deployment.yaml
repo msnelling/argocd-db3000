@@ -62,7 +62,7 @@ spec:
           name: media-sync
           subPath: tv
         - mountPath: /other
-          name: media-sync
+          name: media
           subPath: Other
       volumes:
       - name: config
