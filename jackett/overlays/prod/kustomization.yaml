@@ -4,6 +4,6 @@ commonLabels:
   variant: prod
 images:
 - name: ghcr.io/linuxserver/jackett
-  newTag: 0.20.1018
+  newTag: 0.20.2086
 bases:
 - ../../base
