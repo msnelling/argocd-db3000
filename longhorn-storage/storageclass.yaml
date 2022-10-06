@@ -1,0 +1,19 @@
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: longhorn-db3000
+provisioner: driver.longhorn.io
+parameters:
+  numberOfReplicas: "2"
+  staleReplicaTimeout: "30"
+  fromBackup: ""
+  recurringJobSelector: '[
+    {
+      "name":"db3000-snapshot",
+      "isGroup":false
+    },
+    {
+      "name":"db3000-backup",
+      "isGroup":false
+    }
+  ]'
