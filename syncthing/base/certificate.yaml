@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: syncthing-tls
+  labels:
+    app.kubernetes.io/name: syncthing
+spec:
+  secretName: syncthing-tls
+  privateKey:
+    algorithm: ECDSA
+    size: 384
+  dnsNames:
+    - syncthing.xmple.io
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer

@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: syncthing
+  labels:
+    app.kubernetes.io/name: syncthing
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: syncthing
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: syncthing
+    spec:
+      containers:
+        - name: syncthing
+          image: ghcr.io/linuxserver/syncthing:latest
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            allowPrivilegeEscalation: false
+          ports:
+            - name: web-ui
+              containerPort: 8384
+            - name: syncthing-tcp
+              containerPort: 22000
+              protocol: TCP
+            - name: syncthing-udp
+              containerPort: 22000
+              protocol: UDP
+          envFrom:
+            - configMapRef:
+                name: syncthing-env
+          volumeMounts:
+            - mountPath: /config
+              name: config
+            - mountPath: /data
+              name: data
+          livenessProbe:
+            tcpSocket:
+              port: web-ui
+            initialDelaySeconds: 10
+          readinessProbe:
+            tcpSocket:
+              port: web-ui
+          resources:
+            limits:
+              memory: 256Mi
+              cpu: 500m
+            requests:
+              cpu: 500m
+              memory: 256Mi
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: syncthing-config
+        - name: data
+          persistentVolumeClaim:
+            claimName: media-share-sync

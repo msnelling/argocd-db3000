@@ -1,0 +1,32 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: syncthing
+  labels:
+    app.kubernetes.io/name: syncthing
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`db3000.xmple.io`) && PathPrefix(`/syncthing/`)
+      kind: Rule
+      services:
+        - name: syncthing-ui
+          port: 80
+      middlewares:
+        - name: syncthing-stripprefix
+  tls:
+    secretName: syncthing-tls
+    options:
+      name: mintls13
+      namespace: traefik
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: syncthing-stripprefix
+spec:
+  stripPrefix:
+    prefixes:
+      - /syncthing
