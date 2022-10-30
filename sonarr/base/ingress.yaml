@@ -6,13 +6,16 @@ metadata:
     app.kubernetes.io/name: sonarr
 spec:
   entryPoints:
-  - websecure
+    - websecure
   routes:
-  - match: Host(`sonarr.xmple.io`)
-    kind: Rule
-    services:
-    - name: sonarr
-      port: 80
+    - match: Host(`sonarr.xmple.io`)
+      kind: Rule
+      services:
+        - name: sonarr
+          port: 80
+      middlewares:
+        - name: forwardauth-authelia
+          namespace: authelia
   tls:
     secretName: sonarr-tls
     options:

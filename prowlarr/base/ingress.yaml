@@ -1,26 +1,23 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
 metadata:
   name: prowlarr
   labels:
     app.kubernetes.io/name: prowlarr
-  annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
-  ingressClassName: traefik
-  rules:
-  - host: prowlarr.xmple.io
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: prowlarr
-            port:
-              name: http
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`db3000.xmple.io`) && PrefixPath(`/prowlarr/`)
+      kind: Rule
+      services:
+        - name: prowlarr
+          port: 80
+      middlewares:
+        - name: forwardauth-authelia
+          namespace: authelia
   tls:
-  - hosts:
-    - prowlarr.xmple.io
     secretName: prowlarr-tls
+    options:
+      name: mintls13
+      namespace: traefik

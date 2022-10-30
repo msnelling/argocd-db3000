@@ -6,13 +6,16 @@ metadata:
     app.kubernetes.io/name: radarr
 spec:
   entryPoints:
-  - websecure
+    - websecure
   routes:
-  - match: Host(`radarr.xmple.io`)
-    kind: Rule
-    services:
-    - name: radarr
-      port: 80
+    - match: Host(`radarr.xmple.io`)
+      kind: Rule
+      services:
+        - name: radarr
+          port: 80
+      middlewares:
+        - name: forwardauth-authelia
+          namespace: authelia
   tls:
     secretName: radarr-tls
     options:
