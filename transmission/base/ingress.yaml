@@ -8,7 +8,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`transmission.xmple.io`)
+    - match: Host(`db3000.xmple.io`) && PathPrefix(`/transmission/`)
       kind: Rule
       services:
         - name: transmission
