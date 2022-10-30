@@ -4,9 +4,8 @@ commonLabels:
   app.kubernetes.io/instance: sonarr
   app.kubernetes.io/part-of: db3000
 resources:
-- config.yaml
-- pv.yaml
-- deployment.yaml
-- service.yaml
-- certificate.yaml
-- ingress.yaml
+  - config.yaml
+  - pv.yaml
+  - deployment.yaml
+  - service.yaml
+  - ingress.yaml

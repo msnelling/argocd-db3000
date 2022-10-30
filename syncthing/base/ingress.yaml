@@ -17,7 +17,7 @@ spec:
       middlewares:
         - name: syncthing-stripprefix
   tls:
-    secretName: syncthing-tls
+    secretName: db3000-tls
     options:
       name: mintls13
       namespace: traefik

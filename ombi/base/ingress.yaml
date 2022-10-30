@@ -14,7 +14,7 @@ spec:
         - name: ombi
           port: 80
   tls:
-    secretName: ombi-tls
+    secretName: db3000-tls
     options:
       name: mintls13
       namespace: traefik
