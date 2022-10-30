@@ -8,7 +8,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`sonarr.xmple.io`)
+    - match: Host(`db3000.xmple.io`) && PathPrefix(`/sonarr/`)
       kind: Rule
       services:
         - name: sonarr
