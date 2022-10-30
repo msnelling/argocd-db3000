@@ -41,17 +41,6 @@ spec:
         envFrom:
         - configMapRef:
             name: transmission-config
-        env:
-        - name: USER
-          valueFrom:
-            secretKeyRef:
-              name: transmission-creds
-              key: username
-        - name: PASS
-          valueFrom:
-            secretKeyRef:
-              name: transmission-creds
-              key: password
         resources:
           limits:
             cpu: 1000m

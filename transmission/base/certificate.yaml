@@ -10,7 +10,7 @@ spec:
     algorithm: ECDSA
     size: 384
   dnsNames:
-  - transmission.xmple.io
+    - transmission.xmple.io
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer

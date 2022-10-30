@@ -4,10 +4,9 @@ commonLabels:
   app.kubernetes.io/instance: transmission
   app.kubernetes.io/part-of: db3000
 resources:
-- config.yaml
-- pv.yaml
-- deployment.yaml
-- service.yaml
-- ingress.yaml
-- certificate.yaml
-- secret.yaml
+  - config.yaml
+  - pv.yaml
+  - deployment.yaml
+  - service.yaml
+  - ingress.yaml
+  - certificate.yaml

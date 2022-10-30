@@ -7,10 +7,10 @@ metadata:
     app.kubernetes.io/name: transmission
 spec:
   ports:
-  - name: http
-    port: 80
-    protocol: TCP
-    targetPort: http
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: http
   selector:
     app.kubernetes.io/name: transmission
   type: ClusterIP
@@ -23,12 +23,12 @@ metadata:
     app.kubernetes.io/name: transmission
 spec:
   ports:
-  - name: bittorrent-tcp
-    port: 51413
-    protocol: TCP
-  - name: bittorrent-udp
-    port: 51413
-    protocol: UDP
+    - name: bittorrent-tcp
+      port: 51413
+      protocol: TCP
+    - name: bittorrent-udp
+      port: 51413
+      protocol: UDP
   selector:
     app.kubernetes.io/name: transmission
   type: LoadBalancer

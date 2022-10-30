@@ -1,26 +1,23 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
 metadata:
   name: transmission
   labels:
     app.kubernetes.io/name: transmission
-  annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
-  ingressClassName: traefik
-  rules:
-  - host: transmission.xmple.io
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: transmission
-            port:
-              name: http
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`transmission.xmple.io`)
+      kind: Rule
+      services:
+        - name: transmission
+          port: 80
+      middlewares:
+        - name: forwardauth-authelia
+          namespace: authelia
   tls:
-  - hosts:
-    - transmission.xmple.io
     secretName: transmission-tls
+    options:
+      name: mintls13
+      namespace: traefik

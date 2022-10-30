@@ -9,7 +9,7 @@ spec:
   capacity:
     storage: 1Gi
   accessModes:
-  - ReadWriteOnce
+    - ReadWriteOnce
   storageClassName: longhorn-db3000
   csi:
     driver: driver.longhorn.io
@@ -24,7 +24,7 @@ metadata:
     app.kubernetes.io/name: transmission
 spec:
   accessModes:
-  - ReadWriteOnce
+    - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
