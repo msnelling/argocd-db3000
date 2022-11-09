@@ -25,12 +25,12 @@ spec:
   ports:
     - name: syncthing-tcp
       port: 22000
-      targetPort: 22000
+      targetPort: syncthing-tcp
       nodePort: 30174
       protocol: TCP
     - name: syncthing-udp
       port: 22000
-      targetPort: 22000
+      targetPort: syncthing-udp
       nodePort: 30174
       protocol: UDP
   selector:
