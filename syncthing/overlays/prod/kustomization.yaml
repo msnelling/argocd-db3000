@@ -5,6 +5,17 @@ commonLabels:
   variant: prod
 images:
   - name: ghcr.io/linuxserver/syncthing
-    newTag: 1.22.0
+    newTag: 1.22.1
 bases:
   - ../../base
+patchesJson6902:
+  - patch: |
+      - op: add
+        path: /metadata/annotations
+        value:
+          cfargotunnel.com/cluster-tunnel: k3s-xmple-io
+          cfargotunnel.com/fqdn: db3000.xmple.io
+    target:
+      version: v1
+      kind: Service
+      name: syncthing
