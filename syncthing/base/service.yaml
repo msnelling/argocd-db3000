@@ -25,10 +25,14 @@ spec:
   ports:
     - name: syncthing-tcp
       port: 22000
+      targetPort: 22000
+      nodePort: 30174
       protocol: TCP
     - name: syncthing-udp
       port: 22000
+      targetPort: 22000
+      nodePort: 30174
       protocol: UDP
   selector:
     app.kubernetes.io/name: syncthing
-  type: LoadBalancer
+  type: NodePort
