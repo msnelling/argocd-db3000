@@ -7,6 +7,6 @@ metadata:
 data:
   TZ: Europe/London
   PGID: "1001"
-  PUID: "1001"
+  PUID: "568"
   UMASK: "007"
   TRANSMISSION_WEB_HOME: /transmission-web-control/
