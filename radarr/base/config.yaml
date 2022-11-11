@@ -6,6 +6,6 @@ metadata:
     app.kubernetes.io/name: radarr
 data:
   TZ: Europe/London
-  PGID: "911"
-  PUID: "911"
+  PGID: "1001"
+  PUID: "568"
   UMASK: "007"

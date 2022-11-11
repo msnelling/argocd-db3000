@@ -6,6 +6,6 @@ metadata:
     app.kubernetes.io/name: sonarr
 data:
   TZ: Europe/London
-  PGID: "911"
+  PGID: "1001"
   PUID: "1001"
   UMASK: "007"
