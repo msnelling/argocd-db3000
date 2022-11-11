@@ -6,4 +6,6 @@ metadata:
     app.kubernetes.io/name: syncthing
 data:
   TZ: Europe/London
+  PGID: "911"
+  PUID: "1001"
   UMASK: "007"
