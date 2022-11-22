@@ -20,7 +20,7 @@ spec:
       containers:
       - name: prowlarr
         image: ghcr.io/linuxserver/prowlarr
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         ports:
         - containerPort: 9696
           name: http
