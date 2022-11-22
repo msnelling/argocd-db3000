@@ -18,46 +18,69 @@ spec:
         app.kubernetes.io/name: transmission
     spec:
       containers:
-      - name: transmission
-        image: ghcr.io/linuxserver/transmission
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 9091
-          name: http
-          protocol: TCP
-        - containerPort: 51413
-          name: bt-udp
-          protocol: UDP
-        - containerPort: 51413
-          name: bt-tcp
-          protocol: TCP
-        livenessProbe:
-          tcpSocket:
-            port: http
-          initialDelaySeconds: 10
-        readinessProbe:
-          tcpSocket:
-            port: http
-        envFrom:
-        - configMapRef:
-            name: transmission-config
-        resources:
-          limits:
-            cpu: 1000m
-            memory: 1000Mi
-          requests:
-            cpu: 500m
-            memory: 500Mi
-        volumeMounts:
-        - mountPath: /config
-          name: config
-        - mountPath: /downloads
-          name: media
-          subPath: Scratch/Download/Transmission
+        - name: gluetun
+          image: qmcgaw/gluetun
+          imagePullPolicy: Always
+          securityContext:
+            privileged: true
+            capabilities:
+              add:
+                - NET_ADMIN
+          env:
+            - name: TZ
+              value: Europe/London
+            - name: DOT
+              value: 'on'
+#            - name: FIREWALL_OUTBOUND_SUBNETS
+#              value: "172.16.0.0/16,10.1.1.0/24"
+            - name: FIREWALL_DEBUG
+              value: "on"
+#            - name: FIREWALL
+#              value: "on"
+          envFrom:
+            - secretRef:
+                name: vpn-secrets
+          resources: {}
+        - name: transmission
+          image: ghcr.io/linuxserver/transmission
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9091
+              name: http
+              protocol: TCP
+            - containerPort: 51413
+              name: bt-udp
+              protocol: UDP
+            - containerPort: 51413
+              name: bt-tcp
+              protocol: TCP
+          livenessProbe:
+            tcpSocket:
+              port: http
+            initialDelaySeconds: 10
+          readinessProbe:
+            tcpSocket:
+              port: http
+          envFrom:
+            - configMapRef:
+                name: transmission-config
+          resources:
+            limits:
+              cpu: 1000m
+              memory: 1000Mi
+            requests:
+              cpu: 500m
+              memory: 500Mi
+          volumeMounts:
+            - mountPath: /config
+              name: config
+            - mountPath: /downloads
+              name: media
+              subPath: Scratch/Download/Transmission
       volumes:
-      - name: config
-        persistentVolumeClaim:
-          claimName: transmission-config
-      - name: media
-        persistentVolumeClaim:
-          claimName: media-share
+        - name: config
+          persistentVolumeClaim:
+            claimName: transmission-config
+        - name: media
+          persistentVolumeClaim:
+            claimName: media-share
