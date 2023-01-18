@@ -18,54 +18,80 @@ spec:
         app.kubernetes.io/name: prowlarr
     spec:
       containers:
-      - name: prowlarr
-        image: ghcr.io/linuxserver/prowlarr
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 9696
-          name: http
-          protocol: TCP
-#          livenessProbe:
-#            httpGet:
-#              path: /notifications
-#              port: http
-#            initialDelaySeconds: 60
-#          readinessProbe:
-#            httpGet:
-#              path: /notifications
-#              port: http
-        envFrom:
-        - configMapRef:
-            name: prowlarr-config
-        resources:
-          limits:
-            cpu: 200m
-            memory: 500Mi
-          requests:
-            cpu: 100m
-            memory: 200Mi
-        volumeMounts:
-        - mountPath: /config
-          name: config
-        - mountPath: /tv
-          name: media
-          subPath: TV
-        - mountPath: /tv_sync
-          name: sync
-          subPath: tv
-        - mountPath: /movies
-          name: media
-          subPath: Movies
-        - mountPath: /movies_sync
-          name: sync
-          subPath: movies
+        - name: gluetun
+          image: qmcgaw/gluetun
+          imagePullPolicy: Always
+          securityContext:
+            privileged: true
+            readOnlyRootFilesystem: false
+            capabilities:
+              add:
+                - NET_ADMIN
+          env:
+            - name: TZ
+              value: Europe/London
+#            - name: DOT
+#              value: 'off'
+            - name: FIREWALL_DEBUG
+              value: 'on'
+            - name: FIREWALL_INPUT_PORTS
+              value: '9696'
+            - name: DNS_KEEP_NAMESERVER
+              value: 'on'
+#            - name: BLOCK_MALICIOUS
+#              value: 'off'
+          envFrom:
+            - secretRef:
+                name: prowlarr-vpn-secrets
+          resources: {}
+        - name: prowlarr
+          image: ghcr.io/linuxserver/prowlarr
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9696
+              name: http
+              protocol: TCP
+  #          livenessProbe:
+  #            httpGet:
+  #              path: /notifications
+  #              port: http
+  #            initialDelaySeconds: 60
+  #          readinessProbe:
+  #            httpGet:
+  #              path: /notifications
+  #              port: http
+          envFrom:
+            - configMapRef:
+                name: prowlarr-config
+          resources:
+            limits:
+              cpu: 200m
+              memory: 500Mi
+            requests:
+              cpu: 100m
+              memory: 200Mi
+          volumeMounts:
+            - mountPath: /config
+              name: config
+            - mountPath: /tv
+              name: media
+              subPath: TV
+            - mountPath: /tv_sync
+              name: sync
+              subPath: tv
+            - mountPath: /movies
+              name: media
+              subPath: Movies
+            - mountPath: /movies_sync
+              name: sync
+              subPath: movies
       volumes:
-      - name: config
-        persistentVolumeClaim:
-          claimName: prowlarr-config
-      - name: media
-        persistentVolumeClaim:
-          claimName: media-share
-      - name: sync
-        persistentVolumeClaim:
-          claimName: media-share-sync
+        - name: config
+          persistentVolumeClaim:
+            claimName: prowlarr-config
+        - name: media
+          persistentVolumeClaim:
+            claimName: media-share
+        - name: sync
+          persistentVolumeClaim:
+            claimName: media-share-sync

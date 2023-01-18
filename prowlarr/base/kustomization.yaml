@@ -5,6 +5,7 @@ commonLabels:
   app.kubernetes.io/part-of: db3000
 resources:
   - config.yaml
+  - secrets.yaml
   - pv.yaml
   - deployment.yaml
   - service.yaml
