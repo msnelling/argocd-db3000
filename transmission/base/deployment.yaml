@@ -23,6 +23,7 @@ spec:
           imagePullPolicy: Always
           securityContext:
             privileged: true
+            readOnlyRootFilesystem: false
             capabilities:
               add:
                 - NET_ADMIN
@@ -31,12 +32,12 @@ spec:
               value: Europe/London
             - name: DOT
               value: 'on'
-#            - name: FIREWALL_OUTBOUND_SUBNETS
-#              value: "172.16.0.0/16,10.1.1.0/24"
             - name: FIREWALL_DEBUG
-              value: "on"
-#            - name: FIREWALL
-#              value: "on"
+              value: 'on'
+            - name: FIREWALL_INPUT_PORTS
+              value: '9091,51413'
+#            - name: DNS_KEEP_NAMESERVER
+#              value: 'on'
           envFrom:
             - secretRef:
                 name: vpn-secrets
