@@ -4,6 +4,6 @@ commonLabels:
   variant: prod
 images:
 - name: ghcr.io/linuxserver/prowlarr
-  newTag: develop
+  newTag: 1.0.1
 bases:
 - ../../base
