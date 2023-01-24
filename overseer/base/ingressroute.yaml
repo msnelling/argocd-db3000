@@ -1,0 +1,21 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: overseerr
+  labels:
+    app.kubernetes.io/name: overseerr
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`overseerr.xmple.io`)
+      kind: Rule
+      services:
+        - name: overseerr
+          port: http
+  tls:
+    secretName: overseerr-tls
+    options:
+      name: mintls13
+      namespace: traefik
