@@ -4,6 +4,6 @@ commonLabels:
   variant: prod
 images:
   - name: ghcr.io/sct/overseerr
-    newTag: 1.31.0
+    newTag: 1.32.5
 bases:
   - ../../base
