@@ -5,7 +5,7 @@ commonLabels:
   variant: prod
 images:
   - name: ghcr.io/linuxserver/syncthing
-    newTag: 1.23.1
+    newTag: 1.23.2
 bases:
   - ../../base
 patchesJson6902:
