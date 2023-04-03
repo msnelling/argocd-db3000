@@ -18,36 +18,27 @@ spec:
         app.kubernetes.io/name: tautulli
     spec:
       containers:
-      - name: tautulli
-        image: ghcr.io/linuxserver/tautulli
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 8181
-          name: http
-          protocol: TCP
-        livenessProbe:
-          httpGet:
-            path: /
-            port: http
-          initialDelaySeconds: 60
-        readinessProbe:
-          httpGet:
-            path: /
-            port: http
-        envFrom:
-        - configMapRef:
-            name: tautulli-config
-        resources:
-          limits:
-            cpu: 100m
-            memory: 600Mi
-          requests:
-            cpu: 50m
-            memory: 300Mi
-        volumeMounts:
-        - mountPath: /config
-          name: config
+        - name: tautulli
+          image: ghcr.io/linuxserver/tautulli
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8181
+              name: http
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: tautulli-config
+          resources:
+            limits:
+              cpu: 500m
+              memory: 600Mi
+            requests:
+              cpu: 200m
+              memory: 300Mi
+          volumeMounts:
+            - mountPath: /config
+              name: config
       volumes:
-      - name: config
-        persistentVolumeClaim:
-          claimName: tautulli-config
+        - name: config
+          persistentVolumeClaim:
+            claimName: tautulli-config
