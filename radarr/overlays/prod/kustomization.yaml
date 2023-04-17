@@ -4,6 +4,6 @@ commonLabels:
   variant: prod
 images:
 - name: ghcr.io/linuxserver/radarr
-  newTag: 4.3.2
+  newTag: 4.4.4
 bases:
 - ../../base
