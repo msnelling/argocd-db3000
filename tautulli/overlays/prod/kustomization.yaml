@@ -4,6 +4,6 @@ commonLabels:
   variant: prod
 images:
 - name: ghcr.io/linuxserver/tautulli
-  newTag: 2.12.2
+  newTag: 2.12.4
 bases:
 - ../../base
