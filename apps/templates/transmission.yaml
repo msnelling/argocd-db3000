@@ -4,7 +4,7 @@ metadata:
   name: transmission
   namespace: argocd
   finalizers:
-  - resources-finalizer.argocd.argoproj.io
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: db3000
   destination:
@@ -15,6 +15,6 @@ spec:
     repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: {{ .Values.spec.source.targetRevision }}
   syncPolicy:
-    #automated: {}
+    automated: {}
     syncOptions:
-    - CreateNamespace=true
+      - CreateNamespace=true
