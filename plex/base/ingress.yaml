@@ -4,23 +4,20 @@ metadata:
   name: plex
   labels:
     app.kubernetes.io/name: plex
-  annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
-  ingressClassName: traefik
+  ingressClassName: cilium
   rules:
-  - host: plex.xmple.io
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: plex
-            port:
-              name: pms
+    - host: plex.xmple.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: plex
+                port:
+                  name: pms
   tls:
-  - hosts:
-    - plex.xmple.io
-    secretName: plex-tls
+    - secretName: plex-tls
+      hosts:
+        - plex.xmple.io
