@@ -1,13 +1,16 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-commonLabels:
-  variant: prod
+labels:
+  - includeSelectors: true
+    pairs:
+      variant: prod
+
 images:
-- name: ghcr.io/linuxserver/ombi
-  newTag: version-v4.3.3
-bases:
-- ../../base
-patchesJson6902:
+  - name: ghcr.io/linuxserver/ombi
+    newTag: version-v4.3.3
+resources:
+  - ../../base
+patches:
   - patch: |
       - op: add
         path: /metadata/annotations
