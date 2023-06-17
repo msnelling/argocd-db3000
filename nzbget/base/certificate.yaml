@@ -8,7 +8,7 @@ spec:
   secretName: nzbget-tls
   privateKey:
     algorithm: ECDSA
-    size: 384
+    size: 256
   dnsNames:
   - nzbget.xmple.io
   issuerRef:
