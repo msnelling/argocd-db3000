@@ -9,8 +9,9 @@ spec:
   privateKey:
     algorithm: ECDSA
     size: 256
+    rotationPolicy: Always
   dnsNames:
-  - resilio.xmple.io
+    - resilio.xmple.io
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer

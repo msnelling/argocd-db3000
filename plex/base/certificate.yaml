@@ -9,8 +9,9 @@ spec:
   privateKey:
     algorithm: ECDSA
     size: 256
+    rotationPolicy: Always
   dnsNames:
-  - plex.xmple.io
+    - plex.xmple.io
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
