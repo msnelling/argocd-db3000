@@ -6,6 +6,6 @@ labels:
       variant: prod
 images:
   - name: ghcr.io/linuxserver/plex
-    newTag: 1.32.3.7192-7aa441827-ls173
+    newTag: 1.32.4
 resources:
   - ../../base
