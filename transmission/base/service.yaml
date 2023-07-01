@@ -32,3 +32,4 @@ spec:
   selector:
     app.kubernetes.io/name: transmission
   type: LoadBalancer
+  loadBalancerIP: 10.1.1.49

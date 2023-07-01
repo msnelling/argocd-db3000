@@ -14,3 +14,4 @@ spec:
     targetPort: pms
     nodePort: 32400
   type: LoadBalancer
+  loadBalancerIP: 10.1.1.49
