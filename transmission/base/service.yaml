@@ -5,6 +5,8 @@ metadata:
   name: transmission
   labels:
     app.kubernetes.io/name: transmission
+  annotations:
+    kube-vip.io/loadbalancerIPs: 10.1.1.48
 spec:
   ports:
     - name: http

@@ -4,6 +4,8 @@ metadata:
   name: plex-lb
   labels:
     app.kubernetes.io/name: plex
+  annotations:
+    kube-vip.io/loadbalancerIPs: 10.1.1.48
 spec:
   selector:
     app.kubernetes.io/name: plex
