@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: gluetun
-          image: qmcgaw/gluetun
+          image: docker.io/qmcgaw/gluetun:latest
           imagePullPolicy: Always
           securityContext:
             privileged: true
@@ -27,20 +27,18 @@ spec:
             capabilities:
               add:
                 - NET_ADMIN
-          env:
-            - name: TZ
-              value: Europe/London
-            - name: DOT
-              value: 'on'
-            - name: FIREWALL_DEBUG
-              value: 'on'
-            - name: FIREWALL_INPUT_PORTS
-              value: '9091,51413'
-#            - name: DNS_KEEP_NAMESERVER
-#              value: 'on'
           envFrom:
+            - configMapRef:
+                name: transmission-vpn-config
             - secretRef:
-                name: vpn-secrets
+                name: transmission-vpn-secrets
+          ports:
+            - containerPort: 8888
+              name: proxy
+              protocol: TCP
+            - containerPort: 8000
+              name: control
+              protocol: TCP
           resources: {}
         - name: transmission
           image: ghcr.io/linuxserver/transmission

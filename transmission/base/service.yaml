@@ -34,3 +34,19 @@ spec:
   selector:
     app.kubernetes.io/name: transmission
   type: LoadBalancer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: transmission-vpn
+  labels:
+    app.kubernetes.io/name: transmission
+spec:
+  ports:
+    - name: proxy
+      port: 8888
+      protocol: TCP
+      targetPort: proxy
+  selector:
+    app.kubernetes.io/name: transmission
+  type: ClusterIP
