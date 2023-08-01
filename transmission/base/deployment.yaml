@@ -32,6 +32,8 @@ spec:
                 name: transmission-vpn-config
             - secretRef:
                 name: transmission-vpn-secrets
+            - secretRef:
+                name: transmission-proxy-credentials
           ports:
             - containerPort: 8888
               name: proxy
