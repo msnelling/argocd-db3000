@@ -41,7 +41,13 @@ spec:
             - containerPort: 8000
               name: control
               protocol: TCP
-          resources: {}
+          resources:
+            limits:
+              cpu: 20m
+              memory: 500Mi
+            requests:
+              cpu: 10m
+              memory: 400Mi
         - name: transmission
           image: ghcr.io/linuxserver/transmission
           imagePullPolicy: IfNotPresent
@@ -67,11 +73,11 @@ spec:
                 name: transmission-config
           resources:
             limits:
-              cpu: 1000m
-              memory: 1000Mi
+              cpu: 400m
+              memory: 1500Mi
             requests:
-              cpu: 500m
-              memory: 500Mi
+              cpu: 200m
+              memory: 1000Mi
           volumeMounts:
             - mountPath: /config
               name: config
