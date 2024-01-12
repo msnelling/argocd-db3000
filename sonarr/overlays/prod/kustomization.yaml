@@ -6,6 +6,6 @@ labels:
       variant: prod
 images:
   - name: ghcr.io/linuxserver/sonarr
-    newTag: 3.0.10
+    newTag: 4.0.0
 resources:
   - ../../base
