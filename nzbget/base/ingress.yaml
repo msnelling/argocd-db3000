@@ -19,4 +19,3 @@ spec:
     secretName: db3000-tls
     options:
       name: mintls13
-      namespace: traefik
