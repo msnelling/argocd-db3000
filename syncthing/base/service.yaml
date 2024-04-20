@@ -21,6 +21,8 @@ metadata:
   name: syncthing-lb
   labels:
     app.kubernetes.io/name: syncthing
+  annotations:
+    kube-vip.io/loadbalancerIPs: 10.1.1.48
 spec:
   ports:
     - name: syncthing-tcp
@@ -35,4 +37,4 @@ spec:
       protocol: UDP
   selector:
     app.kubernetes.io/name: syncthing
-  type: NodePort
+  type: LoadBalancer
