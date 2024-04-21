@@ -6,7 +6,7 @@ labels:
       variant: prod
 images:
   - name: ghcr.io/linuxserver/transmission
-    newTag: 4.0.5
+    newTag: 2021.11.18
   - name: docker.io/qmcgaw/gluetun
     newTag: v3.38.0
 resources:
