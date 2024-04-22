@@ -8,4 +8,5 @@
       "matchPackageNames": ["^ghcr.io/linuxserver/"],
       "versioning": "regex:^(?:(?P<compatibility>[a-zA-Z]+[a-zA-Z0-9-]*)-)?v?(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)(?:-(?P<build>[a-zA-Z0-9-]+(?:-[a-zA-Z0-9-]+)*))?$"
     }
+  ]
 }
