@@ -6,6 +6,6 @@ labels:
       variant: prod
 images:
   - name: ghcr.io/sct/overseerr
-    newTag: v1.33.2
+    newTag: 1.33.2
 resources:
   - ../../base
