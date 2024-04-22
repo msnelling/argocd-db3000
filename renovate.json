@@ -6,8 +6,8 @@
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch"],
-      "matchPackagePatterns": ["^ghcr.io/linuxserver/"],
-      "versioning": "regex:.*version-\\w*(?<major>\\d+)\\.(?<minor>\\d+)(\\.(?<patch>\\d+))?(\\.(?<build>\\d+))?",
+      "matchPackagePatterns": ["^ghcr.io/linuxserver/transmissionm"],
+      "allowedVersions": "<1000",
       "automerge": true
     }
   ]
