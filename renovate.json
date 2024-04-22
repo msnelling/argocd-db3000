@@ -5,10 +5,8 @@
   ],
   "packageRules": [
     {
-      "matchUpdateTypes": ["minor", "patch"],
-      "matchPackagePatterns": ["^ghcr.io/linuxserver/transmissionm"],
-      "allowedVersions": "<1000",
-      "automerge": true
+      "matchPackagePatterns": ["^ghcr.io/linuxserver/transmission"],
+      "allowedVersions": "<1000"
     }
   ]
 }
