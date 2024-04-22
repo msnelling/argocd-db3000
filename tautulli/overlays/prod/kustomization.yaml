@@ -6,6 +6,6 @@ labels:
       variant: prod
 images:
   - name: ghcr.io/linuxserver/tautulli
-    newTag: v2.13.4
+    newTag: 2021.12.16
 resources:
   - ../../base
