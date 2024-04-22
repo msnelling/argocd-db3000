@@ -5,7 +5,7 @@
   ],
   "packageRules": [
     {
-      "matchPackagePatterns": ["^ghcr.io/linuxserver/transmission"],
+      "matchPackagePatterns": ["^ghcr\\.io\/linuxserver\/?:transmission|tautulli)$"],
       "allowedVersions": "<1000"
     }
   ]
