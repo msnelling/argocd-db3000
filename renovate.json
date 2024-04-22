@@ -5,13 +5,6 @@
   ],
   "packageRules": [
     {
-      "matchUpdateTypes": ["minor", "patch"],
-      "matchPackagePatterns": ["^ghcr.io/linuxserver/"],
-      "extractVersion": "regex:.*version-\\D*(?<version>.*)",
-      "automerge": true
-    },
-    {
-      "matchUpdateTypes": ["major"],
       "matchPackagePatterns": ["^ghcr.io/linuxserver/"],
       "extractVersion": "regex:.*version-\\D*(?<version>.*)"
     }
