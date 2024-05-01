@@ -17,6 +17,8 @@ spec:
     - file_mode=0660
     - uid=568
     - gid=1001
+    - mfsymlinks
+    - vers=3.0
   csi:
     driver: smb.csi.k8s.io
     readOnly: false
@@ -37,13 +39,15 @@ spec:
   capacity:
     storage: 100Gi
   accessModes:
-  - ReadWriteMany
+    - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   mountOptions:
     - dir_mode=0770
     - file_mode=0660
     - uid=568
     - gid=1001
+    - mfsymlinks
+    - vers=3.0
   csi:
     driver: smb.csi.k8s.io
     readOnly: false
@@ -61,7 +65,7 @@ metadata:
     app.kubernetes.io/name: media-storage
 spec:
   accessModes:
-  - ReadWriteMany
+    - ReadWriteMany
   resources:
     requests:
       storage: 100Gi
@@ -76,7 +80,7 @@ metadata:
     app.kubernetes.io/name: media-storage
 spec:
   accessModes:
-  - ReadWriteMany
+    - ReadWriteMany
   resources:
     requests:
       storage: 100Gi
