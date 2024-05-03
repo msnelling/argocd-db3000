@@ -61,10 +61,6 @@ spec:
             - containerPort: 51413
               name: bt-tcp
               protocol: TCP
-          livenessProbe:
-            tcpSocket:
-              port: http
-            initialDelaySeconds: 60
           envFrom:
             - configMapRef:
                 name: transmission-config
