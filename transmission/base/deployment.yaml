@@ -68,6 +68,7 @@ spec:
           readinessProbe:
             tcpSocket:
               port: http
+            initialDelaySeconds: 30
           envFrom:
             - configMapRef:
                 name: transmission-config
