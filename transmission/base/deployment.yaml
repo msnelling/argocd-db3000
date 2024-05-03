@@ -62,12 +62,13 @@ spec:
               name: bt-tcp
               protocol: TCP
           livenessProbe:
-            tcpSocket:
+            httpGet:
               port: http
             initialDelaySeconds: 10
           readinessProbe:
-            tcpSocket:
+            httpGet:
               port: http
+              path: /transmission
             initialDelaySeconds: 30
           envFrom:
             - configMapRef:
