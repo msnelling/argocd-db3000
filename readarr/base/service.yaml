@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: readarr
+  labels:
+    app.kubernetes.io/name: readarr
+spec:
+  selector:
+    app.kubernetes.io/name: readarr
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: http
+  type: ClusterIP

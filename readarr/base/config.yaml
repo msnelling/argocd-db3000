@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: readarr-config
+  labels:
+    app.kubernetes.io/name: readarr
+data:
+  TZ: Europe/London
+  PGID: "1001"
+  PUID: "568"
+  UMASK: "007"

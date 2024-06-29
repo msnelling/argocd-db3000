@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: readarr
+  labels:
+    app.kubernetes.io/name: readarr
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: readarr
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: readarr
+    spec:
+      containers:
+      - name: readarr
+        image: ghcr.io/linuxserver/readarr
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8989
+          name: http
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /login
+            port: http
+          initialDelaySeconds: 60
+        readinessProbe:
+          httpGet:
+            path: /login
+            port: http
+        envFrom:
+        - configMapRef:
+            name: readarr-config
+        resources:
+          limits:
+            cpu: 500m
+            memory: 600Mi
+          requests:
+            cpu: 100m
+            memory: 300Mi
+        volumeMounts:
+        - mountPath: /config
+          name: config
+        - mountPath: /downloads
+          name: media
+          subPath: Scratch/Download
+        - mountPath: /tv
+          name: media
+          subPath: TV
+        - mountPath: /tv_sync
+          name: sync
+          subPath: tv
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: readarr-config
+      - name: media
+        persistentVolumeClaim:
+          claimName: media-share
+      - name: sync
+        persistentVolumeClaim:
+          claimName: media-share-sync
