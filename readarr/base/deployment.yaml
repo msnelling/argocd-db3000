@@ -22,7 +22,7 @@ spec:
         image: ghcr.io/linuxserver/readarr
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 8989
+        - containerPort: 8787
           name: http
           protocol: TCP
         livenessProbe:
