@@ -50,12 +50,9 @@ spec:
         - mountPath: /downloads
           name: media
           subPath: Scratch/Download
-        - mountPath: /tv
-          name: media
-          subPath: TV
-        - mountPath: /tv_sync
+        - mountPath: /books
           name: sync
-          subPath: tv
+          subPath: books
       volumes:
       - name: config
         persistentVolumeClaim:
