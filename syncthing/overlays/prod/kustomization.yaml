@@ -8,6 +8,6 @@ labels:
 
 images:
   - name: ghcr.io/linuxserver/syncthing
-    newTag: 1.27.8
+    newTag: 1.27.9
 resources:
   - ../../base
