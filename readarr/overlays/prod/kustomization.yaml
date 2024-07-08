@@ -6,6 +6,6 @@ labels:
       variant: prod
 images:
   - name: ghcr.io/linuxserver/readarr
-    newTag: 0.3.29-develop
+    newTag: 0.3.30-develop
 resources:
   - ../../base
