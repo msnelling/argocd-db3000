@@ -48,18 +48,6 @@ spec:
             requests:
               cpu: 10m
               memory: 400Mi
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 9999
-            initialDelaySeconds: 300
-            timeoutSeconds: 10
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 9999
-            initialDelaySeconds: 300
-            timeoutSeconds: 5
         - name: transmission
           image: ghcr.io/linuxserver/transmission
           imagePullPolicy: IfNotPresent
