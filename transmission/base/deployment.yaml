@@ -17,10 +17,11 @@ spec:
       labels:
         app.kubernetes.io/name: transmission
     spec:
-      containers:
+      initContainers:
         - name: gluetun
           image: docker.io/qmcgaw/gluetun:latest
           imagePullPolicy: Always
+          restartPolicy: Always
           securityContext:
             privileged: true
             readOnlyRootFilesystem: false
@@ -48,6 +49,7 @@ spec:
             requests:
               cpu: 10m
               memory: 400Mi
+      containers:
         - name: transmission
           image: ghcr.io/linuxserver/transmission
           imagePullPolicy: IfNotPresent
