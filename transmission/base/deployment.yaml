@@ -53,13 +53,13 @@ spec:
             httpGet:
               path: /
               port: 9999
-            initialDelaySeconds: 60
+            initialDelaySeconds: 3000
             timeoutSeconds: 10
           readinessProbe:
             httpGet:
               path: /
               port: 9999
-            initialDelaySeconds: 60
+            initialDelaySeconds: 300
             timeoutSeconds: 5
       containers:
         - name: transmission
