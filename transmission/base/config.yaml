@@ -25,3 +25,4 @@ data:
   HTTPPROXY: "on"
   HTTPPROXY_LOG: "on"
   #DNS_KEEP_NAMESERVER: "on"
+  UPDATER_PERIOD: "24h"
