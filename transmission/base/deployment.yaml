@@ -50,10 +50,9 @@ spec:
               cpu: 10m
               memory: 400Mi
           readinessProbe:
-            exec:
-              command:
-                - /gluetun-entrypoint
-                - healthcheck
+            httpGet:
+              path: /
+              port: 9999
       containers:
         - name: transmission
           image: ghcr.io/linuxserver/transmission
