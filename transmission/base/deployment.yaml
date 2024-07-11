@@ -49,6 +49,11 @@ spec:
             requests:
               cpu: 10m
               memory: 400Mi
+          readinessProbe:
+            exec:
+              command:
+                - /gluetun-entrypoint
+                - healthcheck
       containers:
         - name: transmission
           image: ghcr.io/linuxserver/transmission
