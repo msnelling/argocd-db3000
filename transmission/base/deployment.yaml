@@ -17,7 +17,7 @@ spec:
       labels:
         app.kubernetes.io/name: transmission
     spec:
-      initContainers:
+      containers:
         - name: gluetun
           image: docker.io/qmcgaw/gluetun:latest
           imagePullPolicy: Always
@@ -53,7 +53,7 @@ spec:
             httpGet:
               path: /
               port: 9999
-            initialDelaySeconds: 3000
+            initialDelaySeconds: 300
             timeoutSeconds: 10
           readinessProbe:
             httpGet:
@@ -61,7 +61,6 @@ spec:
               port: 9999
             initialDelaySeconds: 300
             timeoutSeconds: 5
-      containers:
         - name: transmission
           image: ghcr.io/linuxserver/transmission
           imagePullPolicy: IfNotPresent
