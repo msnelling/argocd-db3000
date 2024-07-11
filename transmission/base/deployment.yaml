@@ -21,7 +21,7 @@ spec:
         - name: gluetun
           image: docker.io/qmcgaw/gluetun:latest
           imagePullPolicy: Always
-          restartPolicy: Always
+          #restartPolicy: Always
           securityContext:
             privileged: true
             readOnlyRootFilesystem: false
@@ -49,10 +49,18 @@ spec:
             requests:
               cpu: 10m
               memory: 400Mi
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 9999
+            initialDelaySeconds: 10
+            timeoutSeconds: 10
           readinessProbe:
             httpGet:
               path: /
               port: 9999
+            initialDelaySeconds: 10
+            timeoutSeconds: 5
       containers:
         - name: transmission
           image: ghcr.io/linuxserver/transmission
