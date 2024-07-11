@@ -21,7 +21,7 @@ spec:
         - name: gluetun
           image: docker.io/qmcgaw/gluetun:latest
           imagePullPolicy: Always
-          #restartPolicy: Always
+          restartPolicy: Always
           securityContext:
             privileged: true
             readOnlyRootFilesystem: false
