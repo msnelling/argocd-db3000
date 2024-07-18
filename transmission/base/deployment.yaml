@@ -45,11 +45,10 @@ spec:
               protocol: TCP
           resources:
             limits:
-              cpu: 200m
               memory: 500Mi
             requests:
               cpu: 100m
-              memory: 400Mi
+              memory: 500Mi
         - name: transmission
           image: ghcr.io/linuxserver/transmission
           imagePullPolicy: IfNotPresent
