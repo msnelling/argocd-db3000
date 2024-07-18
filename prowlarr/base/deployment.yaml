@@ -44,11 +44,10 @@ spec:
             name: prowlarr-config
         resources:
           limits:
-            cpu: 200m
-            memory: 500Mi
+            memory: 256Mi
           requests:
-            cpu: 100m
-            memory: 200Mi
+            cpu: 50m
+            memory: 256Mi
         volumeMounts:
         - mountPath: /config
           name: config

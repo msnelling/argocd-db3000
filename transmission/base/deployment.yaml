@@ -68,11 +68,10 @@ spec:
                 name: transmission-config
           resources:
             limits:
-              cpu: 400m
               memory: 1500Mi
             requests:
-              cpu: 200m
-              memory: 1000Mi
+              cpu: 50m
+              memory: 1500Mi
           volumeMounts:
             - mountPath: /config
               name: config

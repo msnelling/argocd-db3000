@@ -50,9 +50,8 @@ spec:
           resources:
             limits:
               memory: 256Mi
-              cpu: 500m
             requests:
-              cpu: 500m
+              cpu: 50m
               memory: 256Mi
       volumes:
         - name: config
