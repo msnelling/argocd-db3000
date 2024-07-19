@@ -39,11 +39,10 @@ spec:
             name: readarr-config
         resources:
           limits:
-            cpu: 500m
             memory: 600Mi
           requests:
             cpu: 100m
-            memory: 300Mi
+            memory: 600Mi
         volumeMounts:
         - mountPath: /config
           name: config

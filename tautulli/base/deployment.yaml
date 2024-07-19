@@ -30,11 +30,10 @@ spec:
                 name: tautulli-config
           resources:
             limits:
-              cpu: 500m
               memory: 600Mi
             requests:
-              cpu: 200m
-              memory: 300Mi
+              cpu: 100m
+              memory: 600Mi
           volumeMounts:
             - mountPath: /config
               name: config
