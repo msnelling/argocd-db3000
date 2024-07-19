@@ -37,11 +37,10 @@ spec:
             name: nzbget-config
         resources:
           limits:
-            cpu: 500m
             memory: 300Mi
           requests:
             cpu: 100m
-            memory: 100Mi
+            memory: 300Mi
         volumeMounts:
         - mountPath: /config
           name: config

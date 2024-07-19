@@ -18,13 +18,13 @@ spec:
         app.kubernetes.io/name: bazarr
     spec:
       containers:
-      - name: bazarr
-        image: ghcr.io/linuxserver/bazarr
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 6767
-          name: http
-          protocol: TCP
+        - name: bazarr
+          image: ghcr.io/linuxserver/bazarr
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 6767
+              name: http
+              protocol: TCP
 #          livenessProbe:
 #            httpGet:
 #              path: /notifications
@@ -34,37 +34,37 @@ spec:
 #            httpGet:
 #              path: /notifications
 #              port: http
-        envFrom:
-        - configMapRef:
-            name: bazarr-config
-        resources:
-          limits:
-            memory: 500Mi
-          requests:
-            cpu: 100m
-            memory: 500i
-        volumeMounts:
-        - mountPath: /config
-          name: config
-        - mountPath: /tv
-          name: media
-          subPath: TV
-        - mountPath: /tv_sync
-          name: sync
-          subPath: tv
-        - mountPath: /movies
-          name: media
-          subPath: Movies
-        - mountPath: /movies_sync
-          name: sync
-          subPath: movies
+          envFrom:
+            - configMapRef:
+                name: bazarr-config
+          resources:
+            limits:
+              memory: 500Mi
+            requests:
+              cpu: 100m
+              memory: 500Mi
+          volumeMounts:
+            - mountPath: /config
+              name: config
+            - mountPath: /tv
+              name: media
+              subPath: TV
+            - mountPath: /tv_sync
+              name: sync
+              subPath: tv
+            - mountPath: /movies
+              name: media
+              subPath: Movies
+            - mountPath: /movies_sync
+              name: sync
+              subPath: movies
       volumes:
-      - name: config
-        persistentVolumeClaim:
-          claimName: bazarr-config
-      - name: media
-        persistentVolumeClaim:
-          claimName: media-share
-      - name: sync
-        persistentVolumeClaim:
-          claimName: media-share-sync
+        - name: config
+          persistentVolumeClaim:
+            claimName: bazarr-config
+        - name: media
+          persistentVolumeClaim:
+            claimName: media-share
+        - name: sync
+          persistentVolumeClaim:
+            claimName: media-share-sync
