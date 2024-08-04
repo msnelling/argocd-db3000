@@ -25,15 +25,15 @@ spec:
         - containerPort: 7878
           name: http
           protocol: TCP
-        livenessProbe:
-          httpGet:
-            path: /login
-            port: http
-          initialDelaySeconds: 60
-        readinessProbe:
-          httpGet:
-            path: /login
-            port: http
+#        livenessProbe:
+#          httpGet:
+#            path: /login
+#            port: http
+#          initialDelaySeconds: 60
+#        readinessProbe:
+#          httpGet:
+#            path: /login
+#            port: http
         envFrom:
         - configMapRef:
             name: radarr-config
