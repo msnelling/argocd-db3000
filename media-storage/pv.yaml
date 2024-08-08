@@ -18,6 +18,7 @@ spec:
     - uid=568
     - gid=1001
     - mfsymlinks
+    - nobrl
     - vers=3.0
   csi:
     driver: smb.csi.k8s.io
@@ -47,6 +48,7 @@ spec:
     - uid=568
     - gid=1001
     - mfsymlinks
+    - nobrl
     - vers=3.0
   csi:
     driver: smb.csi.k8s.io
