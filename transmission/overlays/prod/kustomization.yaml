@@ -8,6 +8,6 @@ images:
   - name: ghcr.io/linuxserver/transmission
     newTag: 4.0.6
   - name: docker.io/qmcgaw/gluetun
-    newTag: v3.38.0
+    newTag: v3.39.0
 resources:
   - ../../base
