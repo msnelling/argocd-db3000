@@ -4,10 +4,10 @@ commonLabels:
   app.kubernetes.io/instance: media-storage
   app.kubernetes.io/part-of: db3000
 resources:
-- credentials.yaml
-- pv.yaml
+  - credentials.yaml
+  - pv.yaml
 configurations:
-- kustomizeconfig.yaml
+  - kustomizeconfig.yaml
 
 # This is hard-coded until I can figure out why ArgoCD 
 # doesn't updated the nodeStageSecretRef namespace.
