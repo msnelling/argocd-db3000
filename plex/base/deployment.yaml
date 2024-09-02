@@ -20,7 +20,7 @@ spec:
       containers:
       - name: plex
         image: ghcr.io/linuxserver/plex
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         ports:
         - name: pms
           containerPort: 32400
