@@ -4,5 +4,6 @@ commonLabels:
   app.kubernetes.io/part-of: db3000
 resources:
   - certificate.yaml
+  - gateway.yaml
+  - routes.yaml
   - middleware.yaml
-  - tlsoption.yaml
