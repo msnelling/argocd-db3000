@@ -6,18 +6,18 @@ spec:
   gatewayClassName: traefik
   listeners:
     - name: http
-      port: 443
+      port: 8000
       protocol: HTTP
       allowedRoutes:
         namespaces:
-          from: All
+          from: Same
     - name: https-db3000
       hostname: "db3000.xmple.io"
       port: 8443
       protocol: HTTPS
       allowedRoutes:
         namespaces:
-          from: All
+          from: Same
       tls:
         mode: Terminate
         certificateRefs:
