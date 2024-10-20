@@ -26,3 +26,8 @@ spec:
             group: traefik.io
             kind: Middleware
             name: forwardauth-authelia
+        - type: URLRewrite
+          urlRewrite:
+            path:
+              type: ReplacePrefixMatch
+              replacePrefixMatch: /
