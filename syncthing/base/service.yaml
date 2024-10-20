@@ -22,7 +22,8 @@ metadata:
   labels:
     app.kubernetes.io/name: syncthing
   annotations:
-    kube-vip.io/loadbalancerIPs: 10.1.1.48
+    lbipam.cilium.io/ips: "10.1.1.53"
+    lbipam.cilium.io/sharing-key: db3000-lb
 spec:
   ports:
     - name: syncthing-tcp
@@ -38,3 +39,4 @@ spec:
   selector:
     app.kubernetes.io/name: syncthing
   type: LoadBalancer
+  loadBalancerClass: io.cilium/l2-announcer
