@@ -5,7 +5,6 @@ labels:
   - includeSelectors: true
     pairs:
       variant: prod
-
 images:
   - name: ghcr.io/linuxserver/syncthing
     newTag: 1.28.0

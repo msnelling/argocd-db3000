@@ -17,7 +17,7 @@ spec:
             type: PathPrefix
             value: /syncthing
       backendRefs:
-        - name: syncthing
+        - name: syncthing-ui
           port: 80
           kind: Service
       filters:
