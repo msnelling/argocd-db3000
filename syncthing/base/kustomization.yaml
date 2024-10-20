@@ -8,6 +8,4 @@ resources:
   - pv.yaml
   - deployment.yaml
   - service.yaml
-  - ingress.yaml
-configurations:
-  - kustomizeconfig.yaml
+  - httproute.yaml
