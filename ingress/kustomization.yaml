@@ -1,10 +1,11 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-commonLabels:
-  app.kubernetes.io/part-of: db3000
+labels:
+  - includeSelectors: true
+    pairs:
+      app.kubernetes.io/part-of: db3000
 resources:
   - certificate.yaml
   - loadbalancer-ipam.yaml
-  - routes.yaml
   - middleware.yaml
   - tlsoption.yaml
