@@ -11,7 +11,7 @@ spec:
     size: 256
     rotationPolicy: Always
   dnsNames:
-    - db3000.xmple.io
+    - "*.xmple.io"
   issuerRef:
     name: letsencrypt-production
     kind: ClusterIssuer
