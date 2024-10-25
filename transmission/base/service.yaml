@@ -22,7 +22,8 @@ metadata:
   labels:
     app.kubernetes.io/name: transmission
   annotations:
-    kube-vip.io/loadbalancerIPs: 10.1.1.48
+    lbipam.cilium.io/ips: "10.1.1.53"
+    lbipam.cilium.io/sharing-key: db3000-lb
 spec:
   ports:
     - name: bittorrent-tcp
@@ -34,6 +35,7 @@ spec:
   selector:
     app.kubernetes.io/name: transmission
   type: LoadBalancer
+  loadBalancerClass: io.cilium/l2-announcer
 ---
 apiVersion: v1
 kind: Service

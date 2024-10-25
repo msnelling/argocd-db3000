@@ -17,11 +17,6 @@ spec:
       labels:
         app.kubernetes.io/name: prowlarr
     spec:
-#      dnsPolicy: ClusterFirst
-#      dnsConfig:
-#        nameservers:
-#          - 1.1.1.1
-#          - 1.0.0.1
       containers:
       - name: prowlarr
         image: ghcr.io/linuxserver/prowlarr
