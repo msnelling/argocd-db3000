@@ -3,7 +3,7 @@ kind: HTTPRoute
 metadata:
   name: syncthing
   labels:
-    app.kubernetes.io/name: bazasyncthingrr
+    app.kubernetes.io/name: syncthing
 spec:
   parentRefs:
     - name: traefik-gateway
