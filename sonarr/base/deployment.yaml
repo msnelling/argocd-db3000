@@ -18,47 +18,40 @@ spec:
         app.kubernetes.io/name: sonarr
     spec:
       containers:
-      - name: sonarr
-        image: ghcr.io/linuxserver/sonarr
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 8989
-          name: http
-          protocol: TCP
-        livenessProbe:
-          httpGet:
-            path: /login
-            port: http
-          initialDelaySeconds: 60
-        readinessProbe:
-          httpGet:
-            path: /login
-            port: http
-        envFrom:
-        - configMapRef:
-            name: sonarr-config
-        resources:
-          limits:
-            memory: 600Mi
-          requests:
-            cpu: 100m
-            memory: 600Mi
-        volumeMounts:
-        - mountPath: /config
-          name: config
-        - mountPath: /downloads
-          name: media
-          subPath: Download
-        - mountPath: /tv
-          name: media
-          subPath: TV
-        - mountPath: /tv_sync
-          name: sync
-          subPath: tv
+        - name: sonarr
+          image: ghcr.io/linuxserver/sonarr
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8989
+              name: http
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /login
+              port: http
+            initialDelaySeconds: 60
+          readinessProbe:
+            httpGet:
+              path: /login
+              port: http
+          envFrom:
+            - configMapRef:
+                name: sonarr-config
+          resources:
+            limits:
+              memory: 600Mi
+            requests:
+              cpu: 100m
+              memory: 600Mi
+          volumeMounts:
+            - mountPath: /config
+              name: config
+            - mountPath: /media
+              name: media
       volumes:
-      - name: config
-        persistentVolumeClaim:
-          claimName: sonarr-config
-      - name: media
-        persistentVolumeClaim:
-          claimName: media-share
+        - name: config
+          persistentVolumeClaim:
+            claimName: sonarr-config
+        - name: media
+          persistentVolumeClaim:
+            claimName: media-share

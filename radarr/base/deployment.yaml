@@ -18,47 +18,40 @@ spec:
         app.kubernetes.io/name: radarr
     spec:
       containers:
-      - name: radarr
-        image: ghcr.io/linuxserver/radarr
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 7878
-          name: http
-          protocol: TCP
-#        livenessProbe:
-#          httpGet:
-#            path: /login
-#            port: http
-#          initialDelaySeconds: 60
-#        readinessProbe:
-#          httpGet:
-#            path: /login
-#            port: http
-        envFrom:
-        - configMapRef:
-            name: radarr-config
-        resources:
-          limits:
-            memory: 512Mi
-          requests:
-            cpu: 100m
-            memory: 512Mi
-        volumeMounts:
-        - mountPath: /config
-          name: config
-        - mountPath: /downloads
-          name: media
-          subPath: Download
-        - mountPath: /movies
-          name: media
-          subPath: Movies
-        - mountPath: /movies_sync
-          name: sync
-          subPath: movies
+        - name: radarr
+          image: ghcr.io/linuxserver/radarr
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 7878
+              name: http
+              protocol: TCP
+#          livenessProbe:
+#            httpGet:
+#              path: /login
+#              port: http
+#            initialDelaySeconds: 60
+#          readinessProbe:
+#            httpGet:
+#              path: /login
+#              port: http
+          envFrom:
+            - configMapRef:
+                name: radarr-config
+          resources:
+            limits:
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 512Mi
+          volumeMounts:
+            - mountPath: /config
+              name: config
+            - mountPath: /media
+              name: media
       volumes:
-      - name: config
-        persistentVolumeClaim:
-          claimName: radarr-config
-      - name: media
-        persistentVolumeClaim:
-          claimName: media-share
+        - name: config
+          persistentVolumeClaim:
+            claimName: radarr-config
+        - name: media
+          persistentVolumeClaim:
+            claimName: media-share

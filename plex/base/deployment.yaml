@@ -18,56 +18,43 @@ spec:
         app.kubernetes.io/name: plex
     spec:
       containers:
-      - name: plex
-        image: ghcr.io/linuxserver/plex
-        imagePullPolicy: Always
-        ports:
-        - name: pms
-          containerPort: 32400
-          protocol: TCP
-        readinessProbe:
-          httpGet:
-            path: /identity
-            port: 32400
-          initialDelaySeconds: 15
-          timeoutSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /identity
-            port: 32400
-          initialDelaySeconds: 10
-          timeoutSeconds: 10
-        envFrom:
-        - configMapRef:
-            name: plex-config
-        resources:
-          limits:
-            memory: 1Gi
-          requests:
-            cpu: 100m
-            memory: 1Gi
-        volumeMounts:
-        - mountPath: /config
-          name: config
-        - mountPath: /movies
-          name: media
-          subPath: Movies
-        - mountPath: /movies_sync
-          name: media-sync
-          subPath: movies
-        - mountPath: /tv
-          name: media
-          subPath: TV
-        - mountPath: /tv_sync
-          name: media-sync
-          subPath: tv
-        - mountPath: /other
-          name: media
-          subPath: Other
+        - name: plex
+          image: ghcr.io/linuxserver/plex
+          imagePullPolicy: Always
+          ports:
+            - name: pms
+              containerPort: 32400
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /identity
+              port: 32400
+            initialDelaySeconds: 15
+            timeoutSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /identity
+              port: 32400
+            initialDelaySeconds: 10
+            timeoutSeconds: 10
+          envFrom:
+            - configMapRef:
+                name: plex-config
+          resources:
+            limits:
+              memory: 1Gi
+            requests:
+              cpu: 100m
+              memory: 1Gi
+          volumeMounts:
+            - mountPath: /config
+              name: config
+            - mountPath: /media
+              name: media
       volumes:
-      - name: config
-        persistentVolumeClaim:
-          claimName: plex-config
-      - name: media
-        persistentVolumeClaim:
-          claimName: media-share
+        - name: config
+          persistentVolumeClaim:
+            claimName: plex-config
+        - name: media
+          persistentVolumeClaim:
+            claimName: media-share

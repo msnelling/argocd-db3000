@@ -18,44 +18,40 @@ spec:
         app.kubernetes.io/name: readarr
     spec:
       containers:
-      - name: readarr
-        image: ghcr.io/linuxserver/readarr
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 8787
-          name: http
-          protocol: TCP
-        livenessProbe:
-          httpGet:
-            path: /login
-            port: http
-          initialDelaySeconds: 60
-        readinessProbe:
-          httpGet:
-            path: /login
-            port: http
-        envFrom:
-        - configMapRef:
-            name: readarr-config
-        resources:
-          limits:
-            memory: 600Mi
-          requests:
-            cpu: 100m
-            memory: 600Mi
-        volumeMounts:
-        - mountPath: /config
-          name: config
-        - mountPath: /downloads
-          name: media
-          subPath: Download
-        - mountPath: /books
-          name: sync
-          subPath: books
+        - name: readarr
+          image: ghcr.io/linuxserver/readarr
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8787
+              name: http
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /login
+              port: http
+            initialDelaySeconds: 60
+          readinessProbe:
+            httpGet:
+              path: /login
+              port: http
+          envFrom:
+            - configMapRef:
+                name: readarr-config
+          resources:
+            limits:
+              memory: 600Mi
+            requests:
+              cpu: 100m
+              memory: 600Mi
+          volumeMounts:
+            - mountPath: /config
+              name: config
+            - mountPath: /media
+              name: media
       volumes:
-      - name: config
-        persistentVolumeClaim:
-          claimName: readarr-config
-      - name: media
-        persistentVolumeClaim:
-          claimName: media-share
+        - name: config
+          persistentVolumeClaim:
+            claimName: readarr-config
+        - name: media
+          persistentVolumeClaim:
+            claimName: media-share

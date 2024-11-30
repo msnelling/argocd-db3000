@@ -18,50 +18,40 @@ spec:
         app.kubernetes.io/name: prowlarr
     spec:
       containers:
-      - name: prowlarr
-        image: ghcr.io/linuxserver/prowlarr
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 9696
-          name: http
-          protocol: TCP
+        - name: prowlarr
+          image: ghcr.io/linuxserver/prowlarr
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9696
+              name: http
+              protocol: TCP
 #          livenessProbe:
-#            httpGet:
-#              path: /notifications
-#              port: http
-#            initialDelaySeconds: 60
-#          readinessProbe:
-#            httpGet:
-#              path: /notifications
-#              port: http
-        envFrom:
-        - configMapRef:
-            name: prowlarr-config
-        resources:
-          limits:
-            memory: 384Mi
-          requests:
-            cpu: 100m
-            memory: 384Mi
-        volumeMounts:
-        - mountPath: /config
-          name: config
-        - mountPath: /tv
-          name: media
-          subPath: TV
-        - mountPath: /tv_sync
-          name: sync
-          subPath: tv
-        - mountPath: /movies
-          name: media
-          subPath: Movies
-        - mountPath: /movies_sync
-          name: sync
-          subPath: movies
+#             httpGet:
+#               path: /notifications
+#               port: http
+#             initialDelaySeconds: 60
+#           readinessProbe:
+#             httpGet:
+#               path: /notifications
+#               port: http
+          envFrom:
+            - configMapRef:
+                name: prowlarr-config
+          resources:
+            limits:
+              memory: 384Mi
+            requests:
+              cpu: 100m
+              memory: 384Mi
+          volumeMounts:
+            - mountPath: /config
+              name: config
+            - mountPath: /media
+              name: media
       volumes:
-      - name: config
-        persistentVolumeClaim:
-          claimName: prowlarr-config
-      - name: media
-        persistentVolumeClaim:
-          claimName: media-share
+        - name: config
+          persistentVolumeClaim:
+            claimName: prowlarr-config
+        - name: media
+          persistentVolumeClaim:
+            claimName: media-share

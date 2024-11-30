@@ -46,18 +46,8 @@ spec:
           volumeMounts:
             - mountPath: /config
               name: config
-            - mountPath: /tv
+            - mountPath: /media
               name: media
-              subPath: TV
-            - mountPath: /tv_sync
-              name: sync
-              subPath: tv
-            - mountPath: /movies
-              name: media
-              subPath: Movies
-            - mountPath: /movies_sync
-              name: sync
-              subPath: movies
       volumes:
         - name: config
           persistentVolumeClaim:
