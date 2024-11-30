@@ -46,7 +46,7 @@ spec:
           name: config
         - mountPath: /downloads
           name: media
-          subPath: Scratch/Download/NZBGet
+          subPath: Download/NZBGet
       volumes:
       - name: config
         persistentVolumeClaim:

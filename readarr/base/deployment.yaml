@@ -48,7 +48,7 @@ spec:
           name: config
         - mountPath: /downloads
           name: media
-          subPath: Scratch/Download
+          subPath: Download
         - mountPath: /books
           name: sync
           subPath: books
@@ -59,6 +59,3 @@ spec:
       - name: media
         persistentVolumeClaim:
           claimName: media-share
-      - name: sync
-        persistentVolumeClaim:
-          claimName: media-share-sync

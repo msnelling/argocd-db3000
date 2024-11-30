@@ -39,6 +39,7 @@ spec:
             - mountPath: /config
               name: config
             - mountPath: /data
+              subPath: Sync
               name: data
           livenessProbe:
             tcpSocket:
@@ -59,4 +60,4 @@ spec:
             claimName: syncthing-config
         - name: data
           persistentVolumeClaim:
-            claimName: media-share-sync
+            claimName: media-share

@@ -25,37 +25,7 @@ spec:
     readOnly: false
     volumeHandle: db3000-media-share
     volumeAttributes:
-      source: "//10.1.1.30/Plex Media"
-    nodeStageSecretRef:
-      name: media-smb-creds
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: db3000-media-share-sync
-  labels:
-    app.kubernetes.io/name: media-storage
-spec:
-  storageClassName: smb-media-share-sync
-  capacity:
-    storage: 100Gi
-  accessModes:
-    - ReadWriteMany
-  persistentVolumeReclaimPolicy: Retain
-  mountOptions:
-    - dir_mode=0770
-    - file_mode=0660
-    - uid=568
-    - gid=1001
-    - mfsymlinks
-    - nobrl
-    - vers=3.0
-  csi:
-    driver: smb.csi.k8s.io
-    readOnly: false
-    volumeHandle: db3000-media-share-sync
-    volumeAttributes:
-      source: "//10.1.1.30/Sync Media"
+      source: "//10.1.1.30/Media"
     nodeStageSecretRef:
       name: media-smb-creds
 ---
@@ -73,18 +43,3 @@ spec:
       storage: 100Gi
   volumeName: db3000-media-share
   storageClassName: smb-media-share
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: media-share-sync
-  labels:
-    app.kubernetes.io/name: media-storage
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 100Gi
-  volumeName: db3000-media-share-sync
-  storageClassName: smb-media-share-sync

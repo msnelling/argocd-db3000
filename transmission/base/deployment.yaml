@@ -73,7 +73,7 @@ spec:
               name: config
             - mountPath: /downloads
               name: media
-              subPath: Scratch/Download/Transmission
+              subPath: Download/Transmission
       volumes:
         - name: config
           persistentVolumeClaim:

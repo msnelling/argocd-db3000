@@ -65,6 +65,3 @@ spec:
       - name: media
         persistentVolumeClaim:
           claimName: media-share
-      - name: sync
-        persistentVolumeClaim:
-          claimName: media-share-sync
