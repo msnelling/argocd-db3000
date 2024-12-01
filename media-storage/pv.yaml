@@ -17,6 +17,8 @@ spec:
     - file_mode=0660
     - uid=568
     - gid=1001
+    - forceuid
+    - forcegid
     - mfsymlinks
     - nobrl
     - vers=3.0
