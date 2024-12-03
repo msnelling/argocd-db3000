@@ -7,6 +7,6 @@ labels:
       variant: prod
 images:
   - name: ghcr.io/linuxserver/syncthing
-    newTag: 1.28.0
+    newTag: 1.28.1
 resources:
   - ../../base
