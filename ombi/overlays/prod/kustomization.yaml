@@ -7,7 +7,7 @@ labels:
 
 images:
   - name: ghcr.io/linuxserver/ombi
-    newTag: 4.44.1
+    newTag: 4.47.1
 resources:
   - ../../base
 patches:
