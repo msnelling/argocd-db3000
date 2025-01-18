@@ -25,18 +25,6 @@ spec:
             - name: http
               containerPort: 8096
               protocol: TCP
-          readinessProbe:
-            httpGet:
-              path: /health
-              port: 8096
-            initialDelaySeconds: 15
-            timeoutSeconds: 5
-          livenessProbe:
-            httpGet:
-              path: /health
-              port: 8096
-            initialDelaySeconds: 10
-            timeoutSeconds: 10
           envFrom:
             - configMapRef:
                 name: jellyfin-config
