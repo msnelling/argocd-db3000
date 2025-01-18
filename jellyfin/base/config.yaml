@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jellyfin-config
+  labels:
+    app.kubernetes.io/name: jellyfin
+data:
+  JELLYFIN_hostwebclient: 'true'
+  JELLYFIN_PublishedServerUrl: 'https://db3000.xmple.io/jellyfin'
