@@ -6,6 +6,6 @@ labels:
       variant: prod
 images:
   - name: docker.io/jellyfin/jellyfin
-    newTag: '2025011305'
+    newTag: '2025012005'
 resources:
   - ../../base
