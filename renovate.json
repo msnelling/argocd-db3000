@@ -10,10 +10,6 @@
         "^ghcr.io/linuxserver/tautulli$"
       ],
       "allowedVersions": "<1000"
-    },
-    {
-      "matchPackageNames": ["docker.io/jellyfin/jellyfin"],
-      "versioning": "regex:^(?<major>\\d{4})(?<minor>\\d{2})(?<patch>\\d{2})(?<build>\\d+)?$"
     }
   ]
 }
