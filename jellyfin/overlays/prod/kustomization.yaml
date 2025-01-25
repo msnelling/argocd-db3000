@@ -6,6 +6,6 @@ labels:
       variant: prod
 images:
   - name: docker.io/jellyfin/jellyfin
-    newTag: 10.10.4
+    newTag: 10.10.5
 resources:
   - ../../base
