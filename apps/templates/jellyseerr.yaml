@@ -11,7 +11,7 @@ spec:
     namespace: db3000
     server: {{ .Values.spec.destination.server }}
   source:
-    path: jellyfin
+    path: jellyseerr
     repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: {{ .Values.spec.source.targetRevision }}
   syncPolicy:
