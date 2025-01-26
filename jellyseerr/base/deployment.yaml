@@ -23,7 +23,7 @@ spec:
           imagePullPolicy: Always
           ports:
             - name: http
-              containerPort: 80
+              containerPort: 5055
               protocol: TCP
           envFrom:
             - configMapRef:
