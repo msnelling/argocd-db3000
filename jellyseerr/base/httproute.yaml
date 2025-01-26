@@ -12,11 +12,7 @@ spec:
   hostnames:
     - db3000.xmple.io
   rules:
-    - matches:
-        - path:
-            type: PathPrefix
-            value: /jellyseerr
-      backendRefs:
+    - backendRefs:
         - name: jellyseerr
           port: 80
           kind: Service
