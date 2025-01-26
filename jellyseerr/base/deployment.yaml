@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: jellyseerr
-          image: ghcr.io/fallenbagel/jellyseerr
+          image: fallenbagel/jellyseerr
           imagePullPolicy: Always
           ports:
             - name: http

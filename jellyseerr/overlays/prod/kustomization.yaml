@@ -5,7 +5,7 @@ labels:
     pairs:
       variant: prod
 images:
-  - name: ghcr.io/fallenbagel/jellyseerr
+  - name: fallenbagel/jellyseerr
     newTag: 2.3.0
 resources:
   - ../../base
