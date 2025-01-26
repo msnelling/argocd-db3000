@@ -28,7 +28,12 @@ spec:
           envFrom:
             - configMapRef:
                 name: jellyseerr-config
-          resources: {}
+          resources:
+            limits:
+              memory: 1Gi
+            requests:
+              cpu: 100m
+              memory: 1Gi
           volumeMounts:
             - mountPath: /app/config
               name: config
