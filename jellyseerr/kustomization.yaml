@@ -11,7 +11,7 @@ resources:
   - resources/httproute.yaml
 
 helmCharts:
-  - name: jellyseerr/jellyseerr-chart
+  - name: jellyseerr-chart
     repo: oci://ghcr.io/fallenbagel/jellyseerr
     releaseName: jellyseerr
     version: 2.1.0
