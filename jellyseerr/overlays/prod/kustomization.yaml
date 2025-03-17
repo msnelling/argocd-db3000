@@ -6,6 +6,6 @@ labels:
       variant: prod
 images:
   - name: fallenbagel/jellyseerr
-    newTag: 2.5.0
+    newTag: 2.5.1
 resources:
   - ../../base
