@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: audiobookshelf-config
+  labels:
+    app.kubernetes.io/name: audiobookshelf
+data:
+  TZ: Europe/London
