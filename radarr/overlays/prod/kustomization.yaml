@@ -6,6 +6,6 @@ labels:
       variant: prod
 images:
   - name: ghcr.io/linuxserver/radarr
-    newTag: 5.20.2
+    newTag: 5.21.1
 resources:
   - ../../base
