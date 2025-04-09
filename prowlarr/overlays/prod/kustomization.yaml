@@ -6,6 +6,6 @@ labels:
       variant: prod
 images:
   - name: ghcr.io/linuxserver/prowlarr
-    newTag: 1.32.2
+    newTag: 1.33.3
 resources:
   - ../../base
