@@ -28,6 +28,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: jellyseerr-config
+            - secretRef:
+                name: jellyseerr-secrets
           resources:
             limits:
               memory: 1Gi
