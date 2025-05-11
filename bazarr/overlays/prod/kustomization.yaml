@@ -6,6 +6,6 @@ labels:
       variant: prod
 images:
   - name: ghcr.io/linuxserver/bazarr
-    newTag: 1.5.1
+    newTag: 1.5.2
 resources:
   - ../../base
